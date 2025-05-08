@@ -1,0 +1,1 @@
+enum BottomNavigationEnum { ALLPROUDUCTS,HOMEVIEW,CARTVIEW}
