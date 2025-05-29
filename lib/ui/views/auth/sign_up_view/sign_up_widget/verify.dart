@@ -26,17 +26,12 @@ class SignUpVerify extends StatelessWidget {
     return Column(
       children: [
         (50.h).ph,
-        ZoomIn(
-          delay: const Duration(milliseconds: 400),
-          duration: const Duration(milliseconds: 300),
-          child: CustomText(
-              text: tr('Please Enter The 6 Digits Code sent to you'),
-              textType: TextStyleType.bodyBig),
+        CustomText(
+          text: tr('Please Enter The 6 Digits Code sent to you'),
+          textType: TextStyleType.bodyBig,
         ),
         (25.h).ph,
-        CustomOtpField(
-          controller: controller,
-        ),
+        CustomOtpField(controller: controller),
         (25.h).ph,
         GestureDetector(
           onTap: onPressedResend,
@@ -55,26 +50,18 @@ class SignUpVerify extends StatelessWidget {
           ),
         ),
         (25.h).ph,
-        ZoomIn(
-          delay: const Duration(milliseconds: 400),
-          duration: const Duration(milliseconds: 300),
-          child: CustomButton(
-            width: 1.sw,
-            height: 50.h,
-            buttonTypeEnum: ButtonTypeEnum.normal,
-            onPressed: onPressedVerify,
-            text: tr('Verify'),
-          ),
+        CustomButton(
+          width: 1.sw,
+          height: 50.h,
+          buttonTypeEnum: ButtonTypeEnum.normal,
+          onPressed: onPressedVerify,
+          text: tr('Verify'),
         ),
         (25.h).ph,
-        ZoomIn(
-          delay: const Duration(milliseconds: 400),
-          duration: const Duration(milliseconds: 300),
-          child: CustomText(
-            text: tr('You will be redirected to login page'),
-            textType: TextStyleType.bodyBig,
-            textColor: AppColors.grayColor,
-          ),
+        CustomText(
+          text: tr('You will be redirected to login page'),
+          textType: TextStyleType.bodyBig,
+          textColor: AppColors.grayColor,
         ),
       ],
     );

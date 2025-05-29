@@ -31,59 +31,43 @@ class ForgetPasswordView extends StatelessWidget {
           child: Column(
             children: [
               (0.1.sh).ph,
-              FadeInLeft(
-                delay: const Duration(milliseconds: 700),
-                duration: const Duration(milliseconds: 300),
-                child: CustomText(
-                  text: tr("Forget Password"),
-                  textType: TextStyleType.title,
-                  textColor: AppColors.mainColor,
-                  fontWeight: FontWeight.bold,
-                ),
+              CustomText(
+                text: tr("Forget Password"),
+                textType: TextStyleType.title,
+                textColor: AppColors.mainColor,
+                fontWeight: FontWeight.bold,
               ),
               (30.h).ph,
-              FadeInLeft(
-                delay: const Duration(milliseconds: 1000),
-                duration: const Duration(milliseconds: 300),
-                child: CustomText(
-                  text: tr(
-                    "Don’t worry it happens please enter your email address",
-                  ),
-                  textType: TextStyleType.subtitle,
-                  textColor: AppColors.blackColor.withOpacity(0.6),
+              CustomText(
+                text: tr(
+                  "Don’t worry it happens please enter your email address",
                 ),
+                textType: TextStyleType.subtitle,
+                textColor: AppColors.blackColor.withOpacity(0.6),
               ),
               (80.h).ph,
-              FadeInLeft(
-                delay: const Duration(milliseconds: 1300),
-                duration: const Duration(milliseconds: 300),
-                child: CustomTextFormField(
-                  hintText: tr("Email"),
-                  controller: controller.emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value!.isEmpty || !StringUtil.isEmail(value)) {
-                      return tr("please check your email");
-                    }
-                    return null;
-                  },
-                ),
+              CustomTextFormField(
+                hintText: tr("Email"),
+                controller: controller.emailController,
+                keyboardType: TextInputType.emailAddress,
+                validator: (value) {
+                  if (value!.isEmpty || !StringUtil.isEmail(value)) {
+                    return tr("please check your email");
+                  }
+                  return null;
+                },
               ),
               (40.h).ph,
-              ZoomIn(
-                delay: const Duration(milliseconds: 1600),
-                duration: const Duration(milliseconds: 300),
-                child: CustomButton(
-                  width: 1.sw,
-                  height: 50.h,
-                  onPressed: () async {
-                    if (_formKeyForget.currentState!.validate()) {
-                      await controller.forget();
-                    }
-                  },
-                  text: tr("Reset Password"),
-                  buttonTypeEnum: ButtonTypeEnum.normal,
-                ),
+              CustomButton(
+                width: 1.sw,
+                height: 50.h,
+                onPressed: () async {
+                  if (_formKeyForget.currentState!.validate()) {
+                    await controller.forget();
+                  }
+                },
+                text: tr("Reset Password"),
+                buttonTypeEnum: ButtonTypeEnum.normal,
               ),
             ],
           ),

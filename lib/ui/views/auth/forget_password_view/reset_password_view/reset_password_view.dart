@@ -32,99 +32,71 @@ class ResetPasswordView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               (0.1.sh).ph,
-              FadeInLeft(
-                delay: const Duration(milliseconds: 700),
-                duration: const Duration(milliseconds: 300),
-                child: Center(
-                  child: CustomText(
-                    text: tr("Reset Your Password"),
-                    textType: TextStyleType.title,
-                    textColor: AppColors.mainColor,
-                    fontWeight: FontWeight.bold,
-                  ),
+              Center(
+                child: CustomText(
+                  text: tr("Reset Your Password"),
+                  textType: TextStyleType.title,
+                  textColor: AppColors.mainColor,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               (80.h).ph,
-              FadeInLeft(
-                delay: const Duration(milliseconds: 1000),
-                duration: const Duration(milliseconds: 300),
-                child: CustomText(
-                  text: tr("Password"),
-                  textType: TextStyleType.bodyBig,
-                  textColor: AppColors.blackColor,
-                ),
+              CustomText(
+                text: tr("Password"),
+                textType: TextStyleType.bodyBig,
+                textColor: AppColors.blackColor,
               ),
               (5.h).ph,
-              FadeInLeft(
-                delay: const Duration(milliseconds: 1000),
-                duration: const Duration(milliseconds: 300),
-                child: CustomTextFormField(
-                  hintText: "Password",
-                  controller: controller.passwordController,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return tr('please check your password');
-                    }
-                    if (value.length <= 7) {
-                      return tr('please input more than 7');
-                    }
-                    return null;
-                  },
-                ),
+              CustomTextFormField(
+                hintText: "Password",
+                controller: controller.passwordController,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return tr('please check your password');
+                  }
+                  if (value.length <= 7) {
+                    return tr('please input more than 7');
+                  }
+                  return null;
+                },
               ),
               (20.h).ph,
-              FadeInLeft(
-                delay: const Duration(milliseconds: 1300),
-                duration: const Duration(milliseconds: 300),
-                child: CustomText(
-                  text: tr("Confirm Password"),
-                  textType: TextStyleType.bodyBig,
-                  textColor: AppColors.blackColor,
-                ),
+              CustomText(
+                text: tr("Confirm Password"),
+                textType: TextStyleType.bodyBig,
+                textColor: AppColors.blackColor,
               ),
               (5.h).ph,
-              FadeInLeft(
-                delay: const Duration(milliseconds: 1300),
-                duration: const Duration(milliseconds: 300),
-                child: CustomTextFormField(
-                  hintText: tr("Confirm Password"),
-                  controller: controller.confirmPasswordController,
-                  validator: (value) {
-                    if (value!.isEmpty ||
-                        controller.passwordController.text !=
-                            controller.confirmPasswordController.text) {
-                      return tr('please check your confirm password');
-                    }
-                    return null;
-                  },
-                ),
+              CustomTextFormField(
+                hintText: tr("Confirm Password"),
+                controller: controller.confirmPasswordController,
+                validator: (value) {
+                  if (value!.isEmpty ||
+                      controller.passwordController.text !=
+                          controller.confirmPasswordController.text) {
+                    return tr('please check your confirm password');
+                  }
+                  return null;
+                },
               ),
               (40.h).ph,
-              ZoomIn(
-                delay: const Duration(milliseconds: 1600),
-                duration: const Duration(milliseconds: 300),
-                child: CustomButton(
-                  width: 1.sw,
-                  height: 50.h,
-                  onPressed: () async {
-                    if (_formKeyReset.currentState!.validate()) {
-                      await controller.resetPassword();
-                    }
-                  },
-                  text: tr("Reset Password"),
-                  buttonTypeEnum: ButtonTypeEnum.normal,
-                ),
+              CustomButton(
+                width: 1.sw,
+                height: 50.h,
+                onPressed: () async {
+                  if (_formKeyReset.currentState!.validate()) {
+                    await controller.resetPassword();
+                  }
+                },
+                text: tr("Reset Password"),
+                buttonTypeEnum: ButtonTypeEnum.normal,
               ),
               (40.h).ph,
-              FadeInLeft(
-                delay: const Duration(milliseconds: 1900),
-                duration: const Duration(milliseconds: 300),
-                child: Center(
-                  child: CustomText(
-                    text: tr("You will be redirected to login page"),
-                    textType: TextStyleType.body,
-                    textColor: AppColors.blackColor.withOpacity(0.6),
-                  ),
+              Center(
+                child: CustomText(
+                  text: tr("You will be redirected to login page"),
+                  textType: TextStyleType.body,
+                  textColor: AppColors.blackColor.withOpacity(0.6),
                 ),
               ),
             ],

@@ -48,18 +48,6 @@ class HomeView extends StatelessWidget {
                         topPadding: 20.w,
                         bottomPadding: 20.w,
                       ),
-                      Spacer(),
-                      GestureDetector(
-                        onTap: () async {
-                          await homeController.logout();
-                        },
-                        child: Icon(
-                          Icons.logout,
-                          size: 35.w,
-                          color: AppColors.redcolor,
-                        ),
-                      ),
-                      (20.w).pw,
                     ],
                   ),
                 ),

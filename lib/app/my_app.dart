@@ -17,34 +17,18 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: false,
       child: GetMaterialApp(
-        defaultTransition: GetPlatform.isAndroid
-            ? Transition.leftToRight
-            : Transition.cupertino,
+        defaultTransition:
+            GetPlatform.isAndroid
+                ? Transition.leftToRight
+                : Transition.cupertino,
         transitionDuration: const Duration(microseconds: 300),
-        translations: AppTranslation(),
         builder: BotToastInit(),
-        locale: getLocal(),
         navigatorObservers: [BotToastNavigatorObserver()],
         debugShowCheckedModeBanner: false,
-        // onReady: () async {
-        //
-        // },
-        title: 'Car Services',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        title: 'Ecommerce App',
+        theme: ThemeData(primarySwatch: Colors.blue),
         home: SplashScreenView(),
       ),
     );
-  }
-}
-
-Locale getLocal() {
-  if (storage.getAppLanguage() == 'ar') {
-    return const Locale('ar', 'SA');
-  } else if (storage.getAppLanguage() == 'en') {
-    return const Locale('en', 'en');
-  } else {
-    return const Locale('en', 'US');
   }
 }

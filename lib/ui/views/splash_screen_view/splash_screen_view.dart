@@ -13,18 +13,15 @@ class SplashScreenView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(SplashScreenController(), permanent: false);
-
+    Get.put(SplashScreenController());
     return Scaffold(
-      backgroundColor: AppColors.whiteColor, // Or your brand color
+      backgroundColor: AppColors.whiteColor,
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            // Vertically center
             crossAxisAlignment: CrossAxisAlignment.center,
-            // Horizontally center
             children: [
               Expanded(
                 child: Center(
@@ -35,33 +32,29 @@ class SplashScreenView extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 40.h), // Consistent spacing
+              SizedBox(height: 40.h),
               SpinKitThreeBounce(color: AppColors.mainColor),
-              SizedBox(height: 20.h), // Consistent spacing
+              SizedBox(height: 20.h),
               CustomText(
                 text: tr('Welcome!'),
-                // Shorter message
                 textType: TextStyleType.title,
                 isTextAlign: TextAlign.center,
                 fontWeight: FontWeight.bold,
                 textColor: AppColors.mainColor,
                 startPadding: 0.w,
-                //Remove the padding if it is in the column.
                 endPadding: 0.w,
               ),
-              SizedBox(height: 20.h), // Consistent spacing
+              SizedBox(height: 20.h),
               CustomText(
                 text: tr('Loading...'),
-                // Shorter message
                 textType: TextStyleType.body,
                 isTextAlign: TextAlign.center,
                 fontWeight: FontWeight.normal,
                 textColor: AppColors.grayColor,
                 startPadding: 0.w,
-                //Remove the padding if it is in the column.
                 endPadding: 0.w,
               ),
-              SizedBox(height: 130.h), // Consistent spacing
+              SizedBox(height: 130.h),
             ],
           ),
         ),

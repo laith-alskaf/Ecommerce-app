@@ -21,42 +21,31 @@ class SignUpCheckEmail extends StatelessWidget {
     return Column(
       children: [
         (160.h).ph,
-        ZoomIn(
-          delay: const Duration(milliseconds: 400),
-          duration: const Duration(milliseconds: 300),
-          child: CustomText(
-            text: tr('Please Check Your Inbox for The Verification Email'),
-            isTextAlign: TextAlign.center,
-            textType: TextStyleType.title,
-            fontWeight: FontWeight.normal,
-          ),
+        CustomText(
+          text: tr('Please Check Your Inbox for The Verification Email'),
+          isTextAlign: TextAlign.center,
+          textType: TextStyleType.title,
+          fontWeight: FontWeight.normal,
         ),
         (15.h).ph,
-        ZoomIn(
-            delay: const Duration(milliseconds: 400),
-            duration: const Duration(milliseconds: 300),
-            child: GetBuilder<SignUpViewController>(
-              builder: (s) {
-                return CustomText(
-                  text: controller.email,
-                  textType: TextStyleType.body,
-                  textColor: AppColors.mainColor,
-                );
-              },
-            )),
+        GetBuilder<SignUpViewController>(
+          builder: (s) {
+            return CustomText(
+              text: controller.email,
+              textType: TextStyleType.body,
+              textColor: AppColors.mainColor,
+            );
+          },
+        ),
         (25.h).ph,
-        ZoomIn(
-          delay: const Duration(milliseconds: 400),
-          duration: const Duration(milliseconds: 300),
-          child: CustomButton(
-            width: 1.sw,
-            height: 50.h,
-            buttonTypeEnum: ButtonTypeEnum.normal,
-            onPressed: () {
-              controller.currentIndex.value++;
-            },
-            text: tr('Next'),
-          ),
+        CustomButton(
+          width: 1.sw,
+          height: 50.h,
+          buttonTypeEnum: ButtonTypeEnum.normal,
+          onPressed: () {
+            controller.currentIndex.value++;
+          },
+          text: tr('Next'),
         ),
         (25.h).ph,
         GestureDetector(

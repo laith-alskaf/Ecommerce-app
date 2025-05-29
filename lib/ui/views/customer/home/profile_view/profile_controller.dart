@@ -1,90 +1,76 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:simple_e_commerce/core/data/models/api/user_model.dart';
 import 'package:simple_e_commerce/core/enums/request_status.dart';
 import 'package:simple_e_commerce/core/services/base_controller.dart';
+import 'package:simple_e_commerce/core/utils/general_util.dart';
+import 'package:simple_e_commerce/ui/views/customer/home/profile_view/change_pass/change_pass_view.dart';
+import 'package:simple_e_commerce/ui/views/customer/home/profile_view/edit_profile_view/edit_profile_view.dart';
 
 class ProfileController extends BaseController {
+  TextEditingController oldPassword = TextEditingController();
+  TextEditingController newPasswordController = TextEditingController();
+  TextEditingController confirmNewPasswordController = TextEditingController();
   Rx<UserModel?> currentUser = Rx<UserModel?>(null);
+  List<bool> isShowingPass = [false, false];
   Rx<RequestStatus> requestStatus = RequestStatus.DEFUALT.obs;
-
-  // لتتبع اللغة الحالية
-  RxString currentLangCode =
-      Get.locale?.languageCode.obs ?? 'en'.obs; // 'en' كافتراضي
-
-  // SharedPreferenceRepository storageService = Get.find(); // إذا كنت تسجله
+  RxString currentLangCode = Get.locale?.languageCode.obs ?? 'en'.obs;
   final List<Map<String, String>> supportedLanguages = [
     {'code': 'en', 'name': 'English'},
     {'code': 'ar', 'name': 'العربية'},
-    // أضف لغات أخرى هنا
   ];
+  UserModel? storedUser;
 
-  @override
-  void onInit() {
-    super.onInit();
-    loadUserProfile();
-    // تحديث currentLangCode بناءً على لغة GetX الحالية
-    currentLangCode.value = Get.locale?.languageCode ?? 'en';
+  editShowingPass({required int index}) {
+    isShowingPass[index] = !isShowingPass[index];
+    update();
   }
 
   Future<void> loadUserProfile() async {
     requestStatus.value = RequestStatus.LOADING;
     try {
-      // --- بيانات وهمية ---
-      await Future.delayed(const Duration(milliseconds: 500));
-      // UserModel? storedUser = storageService.getUserInfo();
-      // if (storedUser != null) {
-      //   currentUser.value = storedUser;
-      // } else {
-      //   // بيانات افتراضية إذا لم يكن المستخدم مسجلاً أو لا توجد بيانات
-      //    currentUser.value = UserModel(
-      //     id: "0",
-      //     firstName: "Guest",
-      //     lastName: "User",
-      //     email: "guest@example.com",
-      //     role: "Guest",
-      //     avatar: "https://via.placeholder.com/150/CCCCCC/FFFFFF?Text=User",
-      //   );
-      // }
-      currentUser.value = UserModel(
-        userName: "Ahmad",
-        email: "ahmad.naser@example.com",
-        role: "Customer",
-        // avatar: "https://randomuser.me/api/portraits/men/75.jpg",
-      );
+      await Future.delayed(const Duration(milliseconds: 800));
+      storedUser = storage.getUserinfo();
+      currentUser.value = storedUser;
       requestStatus.value = RequestStatus.SUCCESS;
     } catch (e) {
-      print("Error loading user profile: $e");
+      log(
+        "Error loading user profile: $e",
+        error: Error(),
+        name: 'loadUserProfile',
+      );
       requestStatus.value = RequestStatus.ERROR;
       currentUser.value = UserModel(
         userName: "Error",
         email: "N/A",
         role: "N/A",
-        // avatar: "https://via.placeholder.com/150/FF0000/FFFFFF?Text=Error",
       );
     }
+    update();
   }
 
   void editProfile() {
-    // Get.toNamed('/edit-profile', arguments: currentUser.value); // تمرير بيانات المستخدم الحالي
-    Get.snackbar("Navigation", "Navigate to Edit Profile Screen");
+    Get.to(() => EditProfileView());
   }
 
   void changePassword() {
-    // Get.toNamed('/change-password');
-    Get.snackbar("Navigation", "Navigate to Change Password Screen");
+    newPasswordController.clear();
+    confirmNewPasswordController.clear();
+    oldPassword.clear();
+    isShowingPass = [false, false];
+    Get.to(() => ChangePasswordView(email: storedUser!.email!));
   }
 
   void changeLanguage(String langCode) {
-    Locale newLocale = Locale(langCode);
-    // storageService.setAppLanguage(langCode); // حفظ اللغة المختارة
-    Get.updateLocale(newLocale); // تحديث لغة التطبيق عبر GetX
-    currentLangCode.value = langCode; // تحديث المتغير المحلي
-    update(); // لإعادة بناء أي GetBuilders إذا كنت تستخدمها
+    // Locale newLocale = Locale(langCode);
+    // Get.updateLocale(newLocale);
+    // currentLangCode.value = langCode;
+    // update();
   }
 
   void contactUs() {
-    // يمكنك فتح رابط، عرض dialog بمعلومات الاتصال، أو الانتقال لصفحة مخصصة
     Get.defaultDialog(
       title: "Contact Us",
       middleText:
@@ -108,5 +94,15 @@ class ProfileController extends BaseController {
       confirmTextColor: Colors.white,
       onConfirm: () => Get.back(),
     );
+  }
+
+  updatePassword() {
+    Get.back();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    loadUserProfile();
   }
 }
