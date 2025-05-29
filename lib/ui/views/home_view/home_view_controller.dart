@@ -4,10 +4,12 @@ import 'package:simple_e_commerce/core/data/models/api/category_model.dart';
 import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
 import 'package:simple_e_commerce/core/data/repositories/category_repositories.dart';
 import 'package:simple_e_commerce/core/data/repositories/product_repositories.dart';
+import 'package:simple_e_commerce/core/data/repositories/auth_repositories.dart';
 import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/services/base_controller.dart';
 import 'package:simple_e_commerce/ui/shared/colors.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
+import 'package:simple_e_commerce/ui/views/auth/login_view/login_view.dart';
 
 class HomeViewController extends BaseController {
   Rx<Color> clickButton = AppColors.blueColor.obs;
@@ -44,6 +46,7 @@ class HomeViewController extends BaseController {
               message: l,
               messageType: MessageType.REJECTED,
             );
+            update();
           },
           (r) {
             allCategoryName.add('All');
@@ -51,6 +54,26 @@ class HomeViewController extends BaseController {
               allCategoryName.add(value.name!);
             }
             allCategory.addAll(r);
+            update();
+          },
+        );
+      }),
+    );
+  }
+
+  @override
+  Future logout() async {
+    await runFullLoadingFutureFunction(
+      function: UserRepository().logout().then((value) {
+        value.fold(
+          (l) {
+            CustomToast.showMessage(
+              message: l,
+              messageType: MessageType.REJECTED,
+            );
+          },
+          (r) {
+            Get.off(() => LoginView());
           },
         );
       }),
@@ -70,9 +93,13 @@ class HomeViewController extends BaseController {
               message: l,
               messageType: MessageType.REJECTED,
             );
+            update();
           },
           (r) {
+            print('22222222222222222222');
+            print(r);
             allProducts.addAll(r);
+            update();
           },
         );
       }),
@@ -80,8 +107,9 @@ class HomeViewController extends BaseController {
   }
 
   @override
-  void onInit() async {
-    await getALlCategory();
+  void onInit() async{
+   await Future.wait({getALlCategory(), getALlProducts()});
+    // TODO: implement onInit
     super.onInit();
   }
 }

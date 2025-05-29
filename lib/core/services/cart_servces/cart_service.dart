@@ -13,7 +13,7 @@ class CartServices {
   RxDouble deliverFees = 0.0.obs;
   RxDouble total = 0.0.obs;
 
-  CartService() {
+  cartService() {
     getCartCount();
     calcCartTotal();
   }

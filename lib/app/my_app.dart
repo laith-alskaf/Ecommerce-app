@@ -1,6 +1,4 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:simple_e_commerce/app/my_app_controller.dart';
-import 'package:simple_e_commerce/core/services/connectivity_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -28,10 +26,9 @@ class MyApp extends StatelessWidget {
         locale: getLocal(),
         navigatorObservers: [BotToastNavigatorObserver()],
         debugShowCheckedModeBanner: false,
-        onReady: () async {
-          Get.put(ConnectivityService());
-          Get.put(MyAppController());
-        },
+        // onReady: () async {
+        //
+        // },
         title: 'Car Services',
         theme: ThemeData(
           primarySwatch: Colors.blue,

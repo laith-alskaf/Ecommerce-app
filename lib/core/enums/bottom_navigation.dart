@@ -1,1 +1,1 @@
-enum BottomNavigationEnum { ALLPROUDUCTS,HOMEVIEW,CARTVIEW}
+enum BottomNavigationEnum { Products,Home,WishList,CartView,Profile}

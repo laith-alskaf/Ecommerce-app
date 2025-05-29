@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:simple_e_commerce/core/enums/bottom_navigation.dart';
-import 'package:simple_e_commerce/core/utils/general_util.dart';
 import 'package:simple_e_commerce/ui/shared/colors.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
+
 
 class BottomNavigationWidget extends StatefulWidget {
   const BottomNavigationWidget({
@@ -50,18 +48,18 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
                   imageName: 'products',
                   isSelected:
                       widget.bottomNavigationEnum ==
-                      BottomNavigationEnum.ALLPROUDUCTS,
+                      BottomNavigationEnum.Products,
                   onTap: () {
-                    widget.onTap(BottomNavigationEnum.ALLPROUDUCTS, 0);
+                    widget.onTap(BottomNavigationEnum.Products, 0);
                   },
                 ),
                 navItem(
                   imageName: 'home',
                   isSelected:
                       widget.bottomNavigationEnum ==
-                      BottomNavigationEnum.HOMEVIEW,
+                      BottomNavigationEnum.Home,
                   onTap: () {
-                    widget.onTap(BottomNavigationEnum.HOMEVIEW, 1);
+                    widget.onTap(BottomNavigationEnum.Home, 1);
                   },
                 ),
                 Stack(
@@ -71,34 +69,37 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
                         imageName: 'cart',
                         isSelected:
                             widget.bottomNavigationEnum ==
-                            BottomNavigationEnum.CARTVIEW,
+                            BottomNavigationEnum.WishList,
                         onTap: () {
-                          widget.onTap(BottomNavigationEnum.CARTVIEW, 2);
+                          widget.onTap(BottomNavigationEnum.WishList, 2);
                         },
                       ),
                     ),
-                    Obx(
-                      () =>
-                          myAppController.numProdInCart.value != 0
-                              ? Positioned(
-                                right: 10.w,
-                                bottom: 100.w,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: AppColors.redcolor,
-                                    borderRadius: BorderRadius.circular(35.r),
-                                  ),
-                                  padding: EdgeInsets.all(10.w),
-                                  child: CustomText(
-                                    textType: TextStyleType.bodyBig,
-                                    text: "${myAppController.numProdInCart}",
-                                    textColor: AppColors.whiteColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              )
-                              : const SizedBox(),
-                    ),
+                    //TODO EDIT FOR SHOW NUMBER PRODUCT IN CART
+                    // Obx(
+                    //   () =>
+                    //
+                    //     myAppController.numProdInCart.value != 0
+                    //           ? Positioned(
+                    //             right: 10.w,
+                    //             bottom: 100.w,
+                    //             child: Container(
+                    //               decoration: BoxDecoration(
+                    //                 color: AppColors.redcolor,
+                    //                 borderRadius: BorderRadius.circular(35.r),
+                    //               ),
+                    //               padding: EdgeInsets.all(10.w),
+                    //               child: CustomText(
+                    //                 textType: TextStyleType.bodyBig,
+                    //                 TODO EDIT FOR SHOW NUMBER PRODUCT IN CART
+                    //                 // text: "${myAppController.numProdInCart}",
+                    //                 textColor: AppColors.whiteColor,
+                    //                 fontWeight: FontWeight.bold,
+                    //               ),
+                    //             ),
+                    //           )
+                    //           : const SizedBox(),
+                    // ),
                   ],
                 ),
               ],
@@ -123,7 +124,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
         height: 1.sh * 0.042,
         child: SvgPicture.asset(
           'assets/images/$imageName.svg',
-          color: isSelected ? AppColors.blueColor : AppColors.blackColor,
+          color: isSelected ? AppColors.mainColor : AppColors.blackColor,
           width: 1.sw,
         ),
       ),

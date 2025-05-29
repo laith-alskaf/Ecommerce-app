@@ -21,7 +21,7 @@ class CategoryModel {
     name = json['name'];
     description = json['description'];
     createdBy = json['createdBy'];
-    id = json['id'];
+    id = json['_id'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
   }
@@ -31,7 +31,7 @@ class CategoryModel {
     data['name'] = name;
     data['description'] = description;
     data['createdBy'] = createdBy;
-    data['id'] = id;
+    data['_id'] = id;
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
     return data;
@@ -42,7 +42,7 @@ class CategoryModel {
       'name': model.name,
       'description': model.description,
       'createdBy': model.createdBy,
-      'id': model.id,
+      '_id': model.id,
       'createdAt': model.createdAt,
       'updatedAt': model.updatedAt,
     };

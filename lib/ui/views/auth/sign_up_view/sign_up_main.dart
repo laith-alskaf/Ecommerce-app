@@ -258,21 +258,6 @@ class SignUpMain extends StatelessWidget {
                                     "Admin",
                                     style: TextStyle(color: Colors.black),
                                   ),
-                                  (20.w).pw,
-
-                                  Radio(
-                                    value: "superAdmin",
-                                    groupValue: controller.selectedRole,
-                                    activeColor: AppColors.mainColor,
-                                    onChanged: (value) {
-                                      controller.selectedRole = value!;
-                                      controller.update();
-                                    },
-                                  ),
-                                  const Text(
-                                    "superAdmin",
-                                    style: TextStyle(color: Colors.black),
-                                  ),
                                 ],
                               );
                             },

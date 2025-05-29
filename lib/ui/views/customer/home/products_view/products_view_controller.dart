@@ -9,33 +9,34 @@ import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
 class ProductsViewController extends BaseController {
   final TextEditingController searchController = TextEditingController();
   RxList<ProductModel> filteredProducts = <ProductModel>[].obs;
-  RxBool emptyProducts = false.obs;
 
-  Future getProducts({required String title}) async {
+  Future searchProducts({required String title}) async {
     filteredProducts.clear();
     await runLoadingFutureFunction(
       function: ProductRepositories.searchProduct(title: title).then((value) {
         value.fold(
           (l) {
-            emptyProducts.value = true;
             CustomToast.showMessage(
               message: l,
               messageType: MessageType.REJECTED,
             );
+            update();
           },
           (r) {
             filteredProducts.addAll(r);
+            update();
           },
         );
       }),
     );
   }
 
+
+
   @override
   void onInit() async {
-    await getALlProducts().then((c) {
-      filteredProducts = allProducts;
-    });
+    filteredProducts = allProducts;
+    update();
     super.onInit();
   }
 }

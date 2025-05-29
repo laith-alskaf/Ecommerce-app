@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
 import 'package:simple_e_commerce/core/data/models/common_respons.dart';
@@ -62,7 +64,7 @@ class ProductRepositories {
           );
           if (commonResponse.getStatus) {
             List<ProductModel> resultList = [];
-            commonResponse.data!["product"].forEach((element) {
+            commonResponse.data!["products"].forEach((element) {
               resultList.add(ProductModel.fromJson(element));
             });
             return Right(resultList);
@@ -80,6 +82,8 @@ class ProductRepositories {
 
   static Future<Either<String, List<ProductModel>>> searchProduct({
     required String title,
+    int page = 1,
+    int limit = 10,
   }) async {
     try {
       return NetworkUtil.sendRequest(
@@ -89,7 +93,8 @@ class ProductRepositories {
           needAuth: false,
           type: RequestType.GET,
         ),
-        params: {"title": title},
+
+        params: {"title": title,"page": page, "limit": limit},
       ).then((response) {
         if (response != null) {
           CommonResponse<dynamic> commonResponse = CommonResponse.fromJson(
@@ -97,10 +102,116 @@ class ProductRepositories {
           );
           if (commonResponse.getStatus) {
             List<ProductModel> resultList = [];
-            commonResponse.data!["product"]["products"].forEach((element) {
+            commonResponse.data!["products"].forEach((element) {
               resultList.add(ProductModel.fromJson(element));
             });
             return Right(resultList);
+          } else {
+            return Left(commonResponse.message ?? '');
+          }
+        } else {
+          return Left(tr('Please check your internet'));
+        }
+      });
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+  static Future<Either<String, List<ProductModel>>> getProductsMine({
+    int page = 1,
+    int limit = 10,
+  }) async {
+    try {
+      return NetworkUtil.sendRequest(
+        type: RequestType.GET,
+        url: ProductEndpoint.productMine,
+        headers: NetworkConfig.getHeaders(
+          needAuth: true,
+          type: RequestType.GET,
+        ),
+        params: {"page": page, "limit": limit},
+      ).then((response) {
+        if (response != null) {
+          CommonResponse<dynamic> commonResponse = CommonResponse.fromJson(
+            response,
+          );
+          if (commonResponse.getStatus) {
+            List<ProductModel> resultList = [];
+            commonResponse.data!["products"].forEach((element) {
+              resultList.add(ProductModel.fromJson(element));
+            });
+            return Right(resultList);
+          } else {
+            return Left(commonResponse.message ?? '');
+          }
+        } else {
+          return Left(tr('Please check your internet'));
+        }
+      });
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+  static Future<Either<String, String>> createProduct({
+    required Map<String, dynamic> product,
+    required File image,
+  }) async {
+    try {
+      return NetworkUtil.sendMultipartRequest(
+        type: RequestType.POST,
+        url: ProductEndpoint.create,
+        headers: NetworkConfig.getHeaders(
+          needAuth: true,
+          type: RequestType.POST,
+        ),
+        files: {'image': image.path},
+        fields: {
+          'title': product['title'],
+          'stockQuantity': product['stockQuantity'].toString(),
+          'description': product['description'],
+          'price': product['price'].toString(),
+          'categoryId': product['categoryId'],
+        },
+      ).then((response) {
+        if (response != null) {
+          CommonResponse<dynamic> commonResponse = CommonResponse.fromJson(
+            response,
+          );
+          if (commonResponse.getStatus) {
+            return Right(commonResponse.message ?? '');
+          } else {
+            return Left(commonResponse.message ?? '');
+          }
+        } else {
+          return Left(tr('Please check your internet'));
+        }
+      });
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+  static Future<Either<String, String>> deleteProduct({
+    required String productId,
+  }) async {
+    try {
+      return NetworkUtil.sendRequest(
+        type: RequestType.POST,
+        url: ProductEndpoint.delete,
+        headers: NetworkConfig.getHeaders(
+          needAuth: true,
+          type: RequestType.POST,
+        ),
+        body: {'productId': productId},
+      ).then((response) {
+        if (response != null) {
+          CommonResponse<dynamic> commonResponse = CommonResponse.fromJson(
+            response,
+          );
+          if (commonResponse.getStatus) {
+            return Right(commonResponse.message ?? '');
           } else {
             return Left(commonResponse.message ?? '');
           }

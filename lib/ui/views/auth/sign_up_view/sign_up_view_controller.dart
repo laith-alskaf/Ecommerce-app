@@ -1,4 +1,4 @@
-import 'package:simple_e_commerce/core/data/repositories/user_repositories.dart';
+import 'package:simple_e_commerce/core/data/repositories/auth_repositories.dart';
 import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/services/base_controller.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +58,6 @@ class SignUpViewController extends BaseController {
   }
 
   Future<void> sendCode() async {
-    print(verifyCodeController.text);
     await runFullLoadingFutureFunction(
         function: UserRepository()
             .sendCode(

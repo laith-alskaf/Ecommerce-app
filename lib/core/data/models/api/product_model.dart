@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 class ProductModel {
+  String? id;
   Rating? rating;
   String? title;
   String? description;
@@ -8,12 +9,11 @@ class ProductModel {
   int? stockQuantity;
   String? categoryId;
   List<String>? images;
-  String? createdBy;
-  String? id;
   String? createdAt;
   String? updatedAt;
 
   ProductModel({
+    this.id,
     this.rating,
     this.title,
     this.description,
@@ -21,8 +21,6 @@ class ProductModel {
     this.stockQuantity,
     this.categoryId,
     this.images,
-    this.createdBy,
-    this.id,
     this.createdAt,
     this.updatedAt,
   });
@@ -35,8 +33,7 @@ class ProductModel {
     stockQuantity = json['stockQuantity'];
     categoryId = json['categoryId'];
     images = json['images'] != null ? List<String>.from(json['images']) : [];
-    createdBy = json['createdBy'];
-    id = json['id'];
+    id = json['_id'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
   }
@@ -52,12 +49,12 @@ class ProductModel {
     data['stockQuantity'] = stockQuantity;
     data['categoryId'] = categoryId;
     data['images'] = images;
-    data['createdBy'] = createdBy;
-    data['id'] = id;
+    data['_id'] = id;
     data['createdAt'] = createdAt;
     data['updatedAt'] = updatedAt;
     return data;
   }
+
   static Map<String, dynamic> toMap(ProductModel model) {
     return {
       'rating': model.rating,
@@ -67,8 +64,7 @@ class ProductModel {
       'stockQuantity': model.stockQuantity,
       'categoryId': model.categoryId,
       'images': model.images,
-      'createdBy': model.createdBy,
-      'id': model.id,
+      '_id': model.id,
       'createdAt': model.createdAt,
       'updatedAt': model.updatedAt,
     };
@@ -105,9 +101,6 @@ class Rating {
   }
 
   static Map<String, dynamic> toMap(Rating model) {
-    return {
-      'rate': model.rate,
-      'count': model.count,
-    };
+    return {'rate': model.rate, 'count': model.count};
   }
 }

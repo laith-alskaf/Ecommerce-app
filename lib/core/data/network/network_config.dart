@@ -8,15 +8,16 @@ class NetworkConfig {
     return BASE_API + apirout;
   }
 
-  static Map<String, String> getHeaders(
-      {bool? needAuth = true,
-      required RequestType type,
-      Map<String, String>? extraHeaders}) {
+  static Map<String, String> getHeaders({
+    bool? needAuth = true,
+    required RequestType type,
+    Map<String, String>? extraHeaders,
+  }) {
     return {
       if (needAuth!) "Authorization": "Bearer ${storage.getToken()}",
-      // if (type != RequestType.GET)
+      if (type != RequestType.GET)
       "Content-Type": "application/json",
-      ...extraHeaders ?? {}
+      ...extraHeaders ?? {},
     };
   }
 }

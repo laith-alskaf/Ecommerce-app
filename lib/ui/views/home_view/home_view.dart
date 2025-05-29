@@ -5,21 +5,20 @@ import 'package:get/get.dart';
 import 'package:simple_e_commerce/core/enums/request_status.dart';
 import 'package:simple_e_commerce/ui/shared/colors.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_grid.dart';
+import 'package:simple_e_commerce/ui/shared/custom_widget/custom_loading_spinkit.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
+import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
 import 'package:simple_e_commerce/ui/shared/utils.dart';
+import 'package:simple_e_commerce/ui/views/customer/home/product_details_view/product_details_view.dart';
 import 'package:simple_e_commerce/ui/views/home_view/home_view_controller.dart';
 import 'package:simple_e_commerce/ui/views/home_view/home_view_widget/custom_categories_row.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+// ignore: must_be_immutable
+class HomeView extends StatelessWidget {
+  HomeView({super.key});
 
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
+  HomeViewController homeController = Get.put(HomeViewController());
 
-HomeViewController homeController = Get.put(HomeViewController());
-
-class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,22 +36,38 @@ class _HomeViewState extends State<HomeView> {
               SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsetsDirectional.symmetric(vertical: 10.h),
-                  child: CustomText(
-                    text: 'Categories',
-                    textColor: AppColors.mainColor,
-                    fontWeight: FontWeight.bold,
-                    textType: TextStyleType.title,
-                    fontSize: 35.sp,
-                    startPadding: 20.w,
-                    topPadding: 20.w,
-                    bottomPadding: 20.w,
+                  child: Row(
+                    children: [
+                      CustomText(
+                        text: 'Categories',
+                        textColor: AppColors.mainColor,
+                        fontWeight: FontWeight.bold,
+                        textType: TextStyleType.title,
+                        fontSize: 35.sp,
+                        startPadding: 20.w,
+                        topPadding: 20.w,
+                        bottomPadding: 20.w,
+                      ),
+                      Spacer(),
+                      GestureDetector(
+                        onTap: () async {
+                          await homeController.logout();
+                        },
+                        child: Icon(
+                          Icons.logout,
+                          size: 35.w,
+                          color: AppColors.redcolor,
+                        ),
+                      ),
+                      (20.w).pw,
+                    ],
                   ),
                 ),
               ),
               Obx(
                 () =>
-                    homeController.status.value == RequestStatus.LOADING &&
-                            homeController.allCategory.isEmpty
+                    homeController.allCategory.isEmpty &&
+                            homeController.status.value == RequestStatus.LOADING
                         ? SliverToBoxAdapter(
                           child: Center(
                             child: SpinKitCircle(
@@ -61,7 +76,8 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                         )
-                        : homeController.allCategory.isEmpty
+                        : homeController.allCategory.isEmpty &&
+                            homeController.status.value == RequestStatus.DEFUALT
                         ? SliverToBoxAdapter(
                           child: Center(
                             child: CustomText(
@@ -90,17 +106,14 @@ class _HomeViewState extends State<HomeView> {
               ),
               Obx(
                 () =>
-                    homeController.status.value == RequestStatus.LOADING
+                    homeController.allProducts.isEmpty &&
+                            homeController.status.value == RequestStatus.LOADING
                         ? SliverFillRemaining(
                           hasScrollBody: false,
-                          child: Center(
-                            child: SpinKitCircle(
-                              color: AppColors.blueColor,
-                              size: 80.w,
-                            ),
-                          ),
+                          child: showSpinKitLoading(),
                         )
-                        : homeController.allProducts.isEmpty
+                        : homeController.allProducts.isEmpty &&
+                            homeController.status.value == RequestStatus.DEFUALT
                         ? SliverFillRemaining(
                           hasScrollBody: false,
                           child: Center(
@@ -112,7 +125,7 @@ class _HomeViewState extends State<HomeView> {
                         )
                         : SliverToBoxAdapter(
                           child: SizedBox(
-                            height: 0.75.sh,
+                            height: 0.65.sh,
                             child: SingleChildScrollView(
                               physics: BouncingScrollPhysics(),
                               padding: EdgeInsets.symmetric(vertical: 20.h),
@@ -122,9 +135,29 @@ class _HomeViewState extends State<HomeView> {
                                 children: List.generate(
                                   homeController.allProducts.length,
                                   (index) {
-                                    return CustomGrid(
-                                      allProducts: homeController.allProducts,
-                                      index: index,
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Get.to(
+                                          () => ProductDetailsView(
+                                            productDetails:
+                                                homeController
+                                                    .allProducts[index],
+                                          ),
+                                        );
+                                      },
+                                      child: CustomGrid(
+                                        onFavoriteTap: () async {
+                                          await homeController
+                                              .addProductToWishlist(
+                                                id:
+                                                    homeController
+                                                        .allProducts[index]
+                                                        .id!,
+                                              );
+                                        },
+                                        product:
+                                            homeController.allProducts[index],
+                                      ),
                                     );
                                   },
                                 ),

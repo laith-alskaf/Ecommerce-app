@@ -16,11 +16,7 @@ class SharedPreferenceRepositories {
   String PREF_CART_LIST = 'cart_list';
 
   void setToken(String token) {
-    setPreference(
-      dataType: DataType.STRING,
-      key: tokenKey,
-      value: token,
-    );
+    setPreference(dataType: DataType.STRING, key: tokenKey, value: token);
   }
 
   String getToken() {
@@ -32,11 +28,7 @@ class SharedPreferenceRepositories {
   }
 
   void setAppLanguage(String language) {
-    setPreference(
-      dataType: DataType.STRING,
-      key: languageKey,
-      value: language,
-    );
+    setPreference(dataType: DataType.STRING, key: languageKey, value: language);
   }
 
   String getAppLanguage() {
@@ -48,11 +40,7 @@ class SharedPreferenceRepositories {
   }
 
   void setRole(String role) {
-    setPreference(
-      dataType: DataType.STRING,
-      key: roleKey,
-      value: role,
-    );
+    setPreference(dataType: DataType.STRING, key: roleKey, value: role);
   }
 
   String getRole() {
@@ -63,28 +51,21 @@ class SharedPreferenceRepositories {
     }
   }
 
-  void setUserinfo(UserModel user) {
-    String userJson = jsonEncode(user.toJson());
-    setPreference(
-      dataType: DataType.STRING,
-      key: userInfoKey,
-      value: userJson,
-    );
+  void setUserinfo(Map<String, dynamic> user) {
+    String userJson = jsonEncode(user);
+    setPreference(dataType: DataType.STRING, key: userInfoKey, value: userJson);
   }
-  UserModel? getUserinfo() {
-    if (globalSharedPreferences.containsKey(userInfoKey)) {
-      String? userJson = getPreference(key: userInfoKey) as String?;
-      if(userJson != null){
-        return UserModel.fromJson(jsonDecode(userJson));
-      }
-      else{
-        return null;
-      }
 
+  UserModel getUserinfo() {
+    if (globalSharedPreferences.containsKey(userInfoKey)) {
+      final decodedData = jsonDecode(getPreference(key: userInfoKey));
+      UserModel userModel = UserModel.fromJson(decodedData);
+      return userModel;
     } else {
-      return null;
+      return UserModel();
     }
   }
+
   void setCartList(List<CartModel> list) {
     setPreference(
       dataType: DataType.STRING,
@@ -92,6 +73,7 @@ class SharedPreferenceRepositories {
       value: CartModel.encode(list),
     );
   }
+
   List<CartModel> getCartList() {
     if (globalSharedPreferences.containsKey(PREF_CART_LIST)) {
       return CartModel.decode(getPreference(key: PREF_CART_LIST));
@@ -100,11 +82,11 @@ class SharedPreferenceRepositories {
     }
   }
 
-
-  setPreference(
-      {required DataType dataType,
-      required String key,
-      required dynamic value}) async {
+  setPreference({
+    required DataType dataType,
+    required String key,
+    required dynamic value,
+  }) async {
     switch (dataType) {
       case DataType.INT:
         await globalSharedPreferences.setInt(key, value);

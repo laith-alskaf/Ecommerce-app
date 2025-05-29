@@ -9,6 +9,7 @@ import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text_field.dart';
 import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
 import 'package:simple_e_commerce/ui/shared/utils.dart';
+import 'package:simple_e_commerce/ui/views/customer/home/product_details_view/product_details_view.dart';
 import 'package:simple_e_commerce/ui/views/customer/home/products_view/products_view_controller.dart';
 
 class ProductsView extends StatelessWidget {
@@ -18,94 +19,100 @@ class ProductsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.whiteColor,
-        body: RefreshIndicator(
-          onRefresh: () async {
-            await controller.getALlProducts();
-          },
-          child: CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    (20.h).ph,
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: CustomTextFormField(
-                        heightContainer: 60.h,
-                        hintText: 'Write here product title for search',
-                        controller: controller.searchController,
-                        colorBorder: AppColors.mainColor,
-                        suffixIcon: 'ic_search',
-                        suffixOnTap: () {
-                          if (controller.searchController.text.isEmpty) {
-                            controller.getALlProducts().then((v) {
-                              controller.filteredProducts.clear();
-                              controller.filteredProducts =
-                                  controller.allProducts;
-                            });
-                          } else {
-                            controller.getProducts(
-                              title: controller.searchController.text,
-                            );
-                          }
-                        },
-                      ),
-                    ),
-                    SizedBox(height: 10.h),
-                  ],
+    return RefreshIndicator(
+      onRefresh: () async {
+        controller.searchController.clear();
+        await controller.getALlProducts();
+      },
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                (10.h).ph,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: CustomTextFormField(
+                    heightContainer: 60.h,
+                    hintText: 'Write here product title for search',
+                    controller: controller.searchController,
+                    colorBorder: AppColors.mainColor,
+                    prefixIcon: 'ic_search',
+                    prefixOnTap: () {
+                      if (controller.searchController.text.isEmpty) {
+                        controller.getALlProducts().then((v) {
+                          controller.filteredProducts.clear();
+                          controller.filteredProducts = controller.allProducts;
+                        });
+                      } else {
+                        controller.searchProducts(
+                          title: controller.searchController.text,
+                        );
+                      }
+                    },
+                  ),
                 ),
-              ),
-              Obx(
-                () =>
-                    controller.status.value == RequestStatus.LOADING
-                        ? SliverFillRemaining(
-                          hasScrollBody: false,
-                          child: Center(
-                            child: SpinKitCircle(
-                              color: AppColors.blueColor,
-                              size: 60.w,
-                            ),
-                          ),
-                        )
-                        : controller.filteredProducts.isEmpty
-                        ? SliverFillRemaining(
-                          hasScrollBody: false,
-                          child: Center(
-                            child: CustomText(
-                              text: 'Not found any product',
-                              textType: TextStyleType.title,
-                            ),
-                          ),
-                        )
-                        : SliverToBoxAdapter(
-                          child: SizedBox(
-                            height: 0.85.sh,
-                            child: SingleChildScrollView(
-                              physics: BouncingScrollPhysics(),
-                              padding: EdgeInsets.symmetric(vertical: 20.h),
-                              child: Wrap(
-                                alignment: WrapAlignment.spaceEvenly,
-                                runSpacing: screenHeight(20),
-                                children: List.generate(
-                                  controller.filteredProducts.length,
-                                  (index) {
-                                    return CustomGrid(
-                                      allProducts: controller.filteredProducts,
-                                      index: index,
+                (10.h).ph,
+              ],
+            ),
+          ),
+          Obx(
+            () =>
+                controller.status.value == RequestStatus.LOADING
+                    ? SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: SpinKitCircle(
+                          color: AppColors.blueColor,
+                          size: 60.w,
+                        ),
+                      ),
+                    )
+                    : controller.filteredProducts.isEmpty
+                    ? SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: Center(
+                        child: CustomText(
+                          text: 'Not found any product',
+                          textType: TextStyleType.title,
+                        ),
+                      ),
+                    )
+                    : SliverToBoxAdapter(
+                      child: SizedBox(
+                        height: 0.75.sh,
+                        child: SingleChildScrollView(
+                          physics: BouncingScrollPhysics(),
+                          padding: EdgeInsets.only(bottom: 100.h),
+                          child: Wrap(
+                            alignment: WrapAlignment.spaceEvenly,
+                            runSpacing: screenHeight(20),
+                            children: List.generate(
+                              controller.filteredProducts.length,
+                              (index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    Get.to(
+                                      () => ProductDetailsView(
+                                        productDetails:
+                                            controller.filteredProducts[index],
+                                      ),
                                     );
                                   },
-                                ),
-                              ),
+                                  child: CustomGrid(
+                                    onFavoriteTap: () {},
+                                    product: controller.filteredProducts[index],
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ),
-              ),
-            ],
+                      ),
+                    ),
           ),
-        ),
+        ],
       ),
     );
   }

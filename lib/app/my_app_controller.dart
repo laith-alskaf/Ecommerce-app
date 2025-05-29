@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 
 class MyAppController extends BaseController {
   ConnectivityStatus connectivityStatus = ConnectivityStatus.ONLINE;
-  RxInt numProdInCart = cartServices.getCartCount().obs;
+
+  // RxInt numProdInCart = cartServices.getCartCount().obs;
   RxBool isOnline = false.obs;
 
   set setConnectivityStatus(ConnectivityStatus value) {
@@ -28,27 +29,6 @@ class MyAppController extends BaseController {
       // }
     });
   }
-
-  //   Future<void> login() async {
-  //   await runFullLoadingFutureFunction(
-  //       function: UserRepository()
-  //           .login(
-  //     email: emailController.text,
-  //     password: passwordController.text,
-  //   )
-  //           .then((value) {
-  //     value.fold((l) {
-  //       CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
-  //     }, (r) {
-  //       CustomToast.showMessage(message: r, messageType: MessageType.SUCCESS);
-  //       Get.off(() => MainView(currentIndex: 2,));
-
-  //       storage.setRole('user');
-
-  //     });
-  //   }));
-  // }
-
 
   @override
   void onInit() async {

@@ -7,19 +7,20 @@ class MainController extends GetxController {
   final drawerKey = GlobalKey<DrawerControllerState>();
   RxInt lengthList = 0.obs;
   RxInt currentIndex = 1.obs;
-  var selected = BottomNavigationEnum.HOMEVIEW.obs;
+  var selected = BottomNavigationEnum.Home.obs;
   PageController pageViewController = PageController(initialPage: 1);
+
   void animatedToPage(selectedEnum, pageNumber) {
     pageNumber;
 
     pageViewController.animateToPage(
       pageNumber,
-      duration: const Duration(
-        microseconds: 500,
-      ),
+      duration: const Duration(microseconds: 500),
       curve: Curves.easeInCirc,
     );
 
     selected.value = selectedEnum;
   }
+
+
 }

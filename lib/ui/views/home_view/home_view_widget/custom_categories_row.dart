@@ -6,6 +6,7 @@ import 'package:simple_e_commerce/ui/shared/custom_widget/custom_button.dart';
 import 'package:simple_e_commerce/ui/shared/utils.dart';
 import 'package:simple_e_commerce/ui/views/home_view/home_view_controller.dart';
 
+// ignore: must_be_immutable
 class CustomCategoriesRow extends StatelessWidget {
   CustomCategoriesRow({super.key});
 

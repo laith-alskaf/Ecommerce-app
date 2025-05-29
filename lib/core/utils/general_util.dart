@@ -1,6 +1,5 @@
 import 'package:simple_e_commerce/core/data/repositories/storage_repositories.dart';
 import 'package:simple_e_commerce/core/enums/connectivity_status.dart';
-import 'package:simple_e_commerce/core/services/cart_servces/cart_service.dart';
 import 'package:simple_e_commerce/ui/shared/utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_e_commerce/core/services/connectivity_service.dart';
@@ -14,7 +13,7 @@ ConnectivityService get connectivityService => Get.find<ConnectivityService>();
 
 MyAppController get myAppController => Get.find<MyAppController>();
 
-CartServices get cartServices => Get.find<CartServices>();
+// CartServices get cartServices => Get.find<CartServices>();
 // LocationService get locationService => Get.find<LocationService>();
 
 double get sizeTextTitle => 30.sp; //30

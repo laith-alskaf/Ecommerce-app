@@ -13,8 +13,7 @@ class SplashScreenView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Find the controller (it should be initialized in your dependency injection setup)
-    SplashScreenController controller = Get.put(SplashScreenController());
+    Get.put(SplashScreenController(), permanent: false);
 
     return Scaffold(
       backgroundColor: AppColors.whiteColor, // Or your brand color
@@ -22,34 +21,44 @@ class SplashScreenView extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // Vertically center
-            crossAxisAlignment: CrossAxisAlignment.center, // Horizontally center
+            mainAxisAlignment: MainAxisAlignment.center,
+            // Vertically center
+            crossAxisAlignment: CrossAxisAlignment.center,
+            // Horizontally center
             children: [
               Expanded(
                 child: Center(
-                  child: SvgPicture.asset('assets/images/ic_splash.svg',width: 220.w,color: AppColors.mainColor,),
+                  child: SvgPicture.asset(
+                    'assets/images/ic_splash.svg',
+                    width: 220.w,
+                    color: AppColors.mainColor,
+                  ),
                 ),
               ),
               SizedBox(height: 40.h), // Consistent spacing
               SpinKitThreeBounce(color: AppColors.mainColor),
               SizedBox(height: 20.h), // Consistent spacing
               CustomText(
-                text: tr('Welcome!'), // Shorter message
+                text: tr('Welcome!'),
+                // Shorter message
                 textType: TextStyleType.title,
                 isTextAlign: TextAlign.center,
                 fontWeight: FontWeight.bold,
                 textColor: AppColors.mainColor,
-                startPadding: 0.w, //Remove the padding if it is in the column.
+                startPadding: 0.w,
+                //Remove the padding if it is in the column.
                 endPadding: 0.w,
               ),
               SizedBox(height: 20.h), // Consistent spacing
               CustomText(
-                text: tr('Loading...'), // Shorter message
+                text: tr('Loading...'),
+                // Shorter message
                 textType: TextStyleType.body,
                 isTextAlign: TextAlign.center,
                 fontWeight: FontWeight.normal,
                 textColor: AppColors.grayColor,
-                startPadding: 0.w, //Remove the padding if it is in the column.
+                startPadding: 0.w,
+                //Remove the padding if it is in the column.
                 endPadding: 0.w,
               ),
               SizedBox(height: 130.h), // Consistent spacing

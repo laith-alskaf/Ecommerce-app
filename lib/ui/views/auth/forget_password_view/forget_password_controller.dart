@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:simple_e_commerce/core/data/repositories/user_repositories.dart';
+import 'package:simple_e_commerce/core/data/repositories/auth_repositories.dart';
 import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/services/base_controller.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
