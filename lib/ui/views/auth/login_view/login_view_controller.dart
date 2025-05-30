@@ -25,16 +25,16 @@ class LoginViewController extends BaseController {
                   messageType: MessageType.REJECTED,
                 );
               },
-              (r) {
+              (r) async {
                 CustomToast.showMessage(
                   message: r,
                   messageType: MessageType.SUCCESS,
                 );
                 if (storage.getRole() == "customer") {
+                  await myAppController.subscribeToTopicNewProduct();
                   Get.off(() => MainView());
                 } else if (storage.getRole() == "admin") {
                   Get.off(() => HomeViewAdmin());
-
                 }
                 Get.delete<LoginViewController>();
               },

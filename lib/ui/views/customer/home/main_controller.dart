@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:simple_e_commerce/core/enums/bottom_navigation.dart';
+import 'package:simple_e_commerce/core/utils/general_util.dart';
 
 class MainController extends GetxController {
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -21,6 +22,10 @@ class MainController extends GetxController {
 
     selected.value = selectedEnum;
   }
-
+@override
+  void onInit() {
+    super.onInit();
+    myAppController.subscribeToTopicNewProduct();
+  }
 
 }

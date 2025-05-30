@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_e_commerce/core/enums/bottom_navigation.dart';
 import 'package:simple_e_commerce/ui/shared/colors.dart';
 
-
 class BottomNavigationWidget extends StatefulWidget {
   const BottomNavigationWidget({
     super.key,
@@ -56,8 +55,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
                 navItem(
                   imageName: 'home',
                   isSelected:
-                      widget.bottomNavigationEnum ==
-                      BottomNavigationEnum.Home,
+                      widget.bottomNavigationEnum == BottomNavigationEnum.Home,
                   onTap: () {
                     widget.onTap(BottomNavigationEnum.Home, 1);
                   },
@@ -75,31 +73,6 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
                         },
                       ),
                     ),
-                    //TODO EDIT FOR SHOW NUMBER PRODUCT IN CART
-                    // Obx(
-                    //   () =>
-                    //
-                    //     myAppController.numProdInCart.value != 0
-                    //           ? Positioned(
-                    //             right: 10.w,
-                    //             bottom: 100.w,
-                    //             child: Container(
-                    //               decoration: BoxDecoration(
-                    //                 color: AppColors.redcolor,
-                    //                 borderRadius: BorderRadius.circular(35.r),
-                    //               ),
-                    //               padding: EdgeInsets.all(10.w),
-                    //               child: CustomText(
-                    //                 textType: TextStyleType.bodyBig,
-                    //                 TODO EDIT FOR SHOW NUMBER PRODUCT IN CART
-                    //                 // text: "${myAppController.numProdInCart}",
-                    //                 textColor: AppColors.whiteColor,
-                    //                 fontWeight: FontWeight.bold,
-                    //               ),
-                    //             ),
-                    //           )
-                    //           : const SizedBox(),
-                    // ),
                   ],
                 ),
               ],

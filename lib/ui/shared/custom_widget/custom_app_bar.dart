@@ -8,7 +8,7 @@ import 'package:simple_e_commerce/ui/views/customer/home/profile_view/profile_vi
 
 PreferredSizeWidget customAppBar({
   required Rx<BottomNavigationEnum> title,
-  bool? isMainView = true,
+  required bool isMainView,
 }) => AppBar(
   title: Obx(
     () => CustomText(
