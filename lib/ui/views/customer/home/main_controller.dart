@@ -1,6 +1,8 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:simple_e_commerce/core/enums/bottom_navigation.dart';
+import 'package:simple_e_commerce/core/services/background_message_handler_service.dart';
 import 'package:simple_e_commerce/core/utils/general_util.dart';
 
 class MainController extends GetxController {
@@ -22,10 +24,18 @@ class MainController extends GetxController {
 
     selected.value = selectedEnum;
   }
-@override
-  void onInit() {
-    super.onInit();
-    myAppController.subscribeToTopicNewProduct();
+
+  Future initNotification() async {
+    if (storage.getRole() == 'customer') {
+      await notificationService.subscribeToTopicNewProduct(
+        subscribeToTopic: 'new_product',
+      );
+    }
   }
 
+  @override
+  void onReady() async {
+    super.onReady();
+    await initNotification();
+  }
 }

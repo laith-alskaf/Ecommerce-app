@@ -1,5 +1,6 @@
 import 'package:simple_e_commerce/core/data/repositories/storage_repositories.dart';
 import 'package:simple_e_commerce/core/enums/connectivity_status.dart';
+import 'package:simple_e_commerce/core/services/notification_service.dart';
 import 'package:simple_e_commerce/ui/shared/utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_e_commerce/core/services/connectivity_service.dart';
@@ -12,6 +13,7 @@ SharedPreferenceRepositories get storage =>
 ConnectivityService get connectivityService => Get.find<ConnectivityService>();
 
 MyAppController get myAppController => Get.find<MyAppController>();
+NotificationService get notificationService => Get.find<NotificationService>();
 
 // CartServices get cartServices => Get.find<CartServices>();
 // LocationService get locationService => Get.find<LocationService>();

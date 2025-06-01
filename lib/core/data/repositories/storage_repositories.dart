@@ -14,9 +14,22 @@ class SharedPreferenceRepositories {
   String roleKey = 'role';
   String userInfoKey = 'user-info';
   String PREF_CART_LIST = 'cart_list';
+  String fcmToken = 'fcm_token';
 
   void setToken(String token) {
     setPreference(dataType: DataType.STRING, key: tokenKey, value: token);
+  }
+
+  void setFcmToken(String token) {
+    setPreference(dataType: DataType.STRING, key: fcmToken, value: token);
+  }
+
+  String getFcmToken() {
+    if (globalSharedPreferences.containsKey(fcmToken)) {
+      return getPreference(key: fcmToken);
+    } else {
+      return '';
+    }
   }
 
   String getToken() {
