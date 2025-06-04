@@ -128,6 +128,7 @@ class ProductDetailsView extends StatelessWidget {
               icon: Icon(
                 controller.isProductFavorite.value
                     ? Icons.favorite
+
                     : Icons.favorite_border,
                 color:
                     controller.isProductFavorite.value

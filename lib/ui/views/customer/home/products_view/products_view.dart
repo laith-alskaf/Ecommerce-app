@@ -101,7 +101,11 @@ class ProductsView extends StatelessWidget {
                                     );
                                   },
                                   child: CustomGrid(
-                                    onFavoriteTap: () {},
+                                    onFavoriteTap: () async {
+                                      await controller.addProductToWishlist(
+                                        id: controller.allProducts[index].id!,
+                                      );
+                                    },
                                     product: controller.filteredProducts[index],
                                   ),
                                 );

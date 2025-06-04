@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
@@ -6,7 +5,6 @@ import 'package:simple_e_commerce/ui/shared/colors.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_cached_image.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/show_alert_snackbar.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
 import 'package:simple_e_commerce/ui/shared/utils.dart';
 
 // ignore: must_be_immutable
@@ -60,46 +58,6 @@ class CustomGrid extends StatelessWidget {
                   ),
                 ),
 
-                // ClipRRect(
-                //     borderRadius: BorderRadius.vertical(
-                //         top: Radius.circular(12.r)),
-                //     child:
-                //
-                //         )
-                // CachedNetworkImage(
-                //   imageUrl: (product.images != null && product.images!.isNotEmpty)
-                //       ? product.images![0]
-                //       : 'https://via.placeholder.com/200x200/F0F0F0/AAAAAA?text=No+Image', // صورة احتياطية أفضل
-                //   width: double.infinity,
-                //   height: double.infinity,
-                //   fit: BoxFit.cover,
-                //   placeholder: (context, url) => Container(
-                //     color: AppColors.grayColor.withOpacity(0.1), // لون خلفية للـ placeholder
-                //     child: Center(
-                //       child: SizedBox(
-                //         width: 25.w,
-                //         height: 25.w,
-                //         child: CircularProgressIndicator(
-                //           strokeWidth: 2.5,
-                //           color: AppColors.mainColor.withOpacity(0.7),
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                //   errorWidget: (context, url, error) => Container(
-                //     color: AppColors.grayColor.withOpacity(0.1),
-                //     child: Center(
-                //       child: Icon(
-                //         Icons.broken_image_outlined,
-                //         size: 35.w,
-                //         color: AppColors.grayColor.withOpacity(0.5),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-
-                // ),
-                // ),
                 if (onTapDelete != null)
                   Positioned(
                     top: 5.w,
@@ -163,7 +121,7 @@ class CustomGrid extends StatelessWidget {
                   CustomText(
                     text: product.title ?? 'Untitled Product',
                     textColor: AppColors.blackColor.withOpacity(0.85),
-                    textType: TextStyleType.small,
+                    textType: TextStyleType.body,
                     fontWeight: FontWeight.w600,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -172,9 +130,8 @@ class CustomGrid extends StatelessWidget {
                   CustomText(
                     text: product.price != null ? '${product.price} \$' : 'N/A',
                     textColor: AppColors.mainColor,
-                    textType: TextStyleType.subtitle,
+                    textType: TextStyleType.body,
                     fontWeight: FontWeight.bold,
-                    fontSize: 15.sp,
                   ),
                 ],
               ),

@@ -11,63 +11,69 @@ class WishlistController extends BaseController {
   Future getWishlist() async {
     wishlistItems.clear();
     await runLoadingFutureFunction(
-      function: WishlistRepositories.getWishlist().then((value) {
-        value.fold(
-          (l) {
-            CustomToast.showMessage(
-              message: l,
-              messageType: MessageType.REJECTED,
-            );
-            update();
-          },
-          (r) {
-            wishlistItems.addAll(r);
-            update();
-          },
-        );
-      }),
+      function: () async {
+        await WishlistRepositories.getWishlist().then((value) {
+          value.fold(
+            (l) {
+              CustomToast.showMessage(
+                message: l,
+                messageType: MessageType.REJECTED,
+              );
+              update();
+            },
+            (r) {
+              wishlistItems.addAll(r);
+              update();
+            },
+          );
+        });
+      },
     );
   }
 
   Future removeFromWishlist({required String id}) async {
     wishlistItems.clear();
     await runLoadingFutureFunction(
-      function: WishlistRepositories.removeProduct(id: id).then((value) {
-        value.fold(
-          (l) {
-            CustomToast.showMessage(
-              message: l,
-              messageType: MessageType.REJECTED,
-            );
-            update();
-          },
-          (r) async {
-            await getWishlist();
-            showSnackBar(title: r);
-          },
-        );
-      }),
+      function: () async {
+        await WishlistRepositories.removeProduct(id: id).then((value) {
+          value.fold(
+            (l) {
+              CustomToast.showMessage(
+                message: l,
+                messageType: MessageType.REJECTED,
+              );
+              update();
+            },
+            (r) async {
+              await getWishlist();
+              showSnackBar(title: r);
+            },
+          );
+        });
+      },
     );
   }
 
   Future removeAllFromWishlist() async {
     wishlistItems.clear();
     await runLoadingFutureFunction(
-      function: WishlistRepositories.removeAllProduct().then((value) {
-        value.fold(
-          (l) {
-            CustomToast.showMessage(
-              message: l,
-              messageType: MessageType.REJECTED,
-            );
-            update();
-          },
-          (r) async {
-            await getWishlist();
-            showSnackBar(title: r);
-          },
-        );
-      }),
+      function: () async {
+        await WishlistRepositories.removeAllProduct().then((value) {
+          value.fold(
+            (l) {
+              CustomToast.showMessage(
+                message: l,
+                messageType: MessageType.REJECTED,
+              );
+              update();
+            },
+            (r) async {
+              await getWishlist();
+              showSnackBar(title: r);
+            },
+          );
+        });
+      },
     );
   }
 

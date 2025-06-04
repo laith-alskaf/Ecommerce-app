@@ -6,14 +6,14 @@ import 'package:simple_e_commerce/ui/views/customer/home/main_view.dart';
 
 class SplashScreenController extends GetxController {
   Future initAppSplash() async {
+    String role = myAppController.role;
     await Future.delayed(const Duration(seconds: 2)).then((value) {
-      if (storage.getToken() == '') {
+      if (storage.getToken() == '' && role != "guest") {
         Get.off(() => LoginView());
       } else {
-        if (storage.getRole() == "customer") {
+        if (role == "customer" || role == "guest") {
           Get.off(() => MainView());
-        } else if (storage.getRole() == "admin" ||
-            storage.getRole() == "superAdmin") {
+        } else if (storage.getRole() == "admin" || role == "superAdmin") {
           Get.off(() => HomeViewAdmin());
         } else {
           Get.off(() => LoginView());

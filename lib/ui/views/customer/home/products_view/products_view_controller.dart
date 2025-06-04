@@ -13,25 +13,25 @@ class ProductsViewController extends BaseController {
   Future searchProducts({required String title}) async {
     filteredProducts.clear();
     await runLoadingFutureFunction(
-      function: ProductRepositories.searchProduct(title: title).then((value) {
-        value.fold(
-          (l) {
-            CustomToast.showMessage(
-              message: l,
-              messageType: MessageType.REJECTED,
-            );
-            update();
-          },
-          (r) {
-            filteredProducts.addAll(r);
-            update();
-          },
-        );
-      }),
+      function: () async {
+        await ProductRepositories.searchProduct(title: title).then((value) {
+          value.fold(
+            (l) {
+              CustomToast.showMessage(
+                message: l,
+                messageType: MessageType.REJECTED,
+              );
+              update();
+            },
+            (r) {
+              filteredProducts.addAll(r);
+              update();
+            },
+          );
+        });
+      },
     );
   }
-
-
 
   @override
   void onInit() async {

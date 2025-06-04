@@ -4,13 +4,13 @@ import 'package:get/get.dart';
 import 'package:simple_e_commerce/ui/shared/colors.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_button.dart';
 import 'package:simple_e_commerce/ui/shared/utils.dart';
-import 'package:simple_e_commerce/ui/views/admin/all_products_view_admin/all_products_view_controller.dart';
+import 'package:simple_e_commerce/ui/views/home_view/home_view_controller.dart';
 
 // ignore: must_be_immutable
 class CustomCategoriesRow extends StatelessWidget {
   CustomCategoriesRow({super.key});
 
-  AllProductsViewController homeController = Get.find();
+  HomeViewController homeController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +30,16 @@ class CustomCategoriesRow extends StatelessWidget {
               buttonTypeEnum: ButtonTypeEnum.normal,
               width: buttonWidth > width * 0.15 ? buttonWidth : width * 0.19,
               backgroundColor:
-                  homeController.selectedNum == index
-                      ? homeController.clickButton
+                  homeController.selectedNum.value == index
+                      ? homeController.clickButton.value
                       : AppColors.whiteColor,
               borderColor:
-                  homeController.selectedNum == index
+                  homeController.selectedNum.value == index
                       ? AppColors.whiteColor
                       : AppColors.colorBorder,
               text: homeController.allCategoryName[index],
               textColor:
-                  homeController.selectedNum == index
+                  homeController.selectedNum.value == index
                       ? AppColors.whiteColor
                       : AppColors.blackColor,
               onPressed: () {

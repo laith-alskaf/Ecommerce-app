@@ -14,7 +14,9 @@ import 'package:get/get.dart';
 import 'package:simple_e_commerce/ui/views/auth/login_view/login_view.dart';
 import 'package:simple_e_commerce/ui/views/auth/sign_up_view/sign_up_view_controller.dart';
 import 'package:simple_e_commerce/ui/views/auth/sign_up_view/sign_up_widget/check_email.dart';
+import 'package:simple_e_commerce/ui/views/auth/sign_up_view/sign_up_widget/company_form.dart';
 import 'package:simple_e_commerce/ui/views/auth/sign_up_view/sign_up_widget/custom_dilog.dart';
+import 'package:simple_e_commerce/ui/views/auth/sign_up_view/sign_up_widget/user_form.dart';
 import 'package:simple_e_commerce/ui/views/auth/sign_up_view/sign_up_widget/verify.dart';
 
 // ignore: must_be_immutable
@@ -59,6 +61,7 @@ class SignUpMain extends StatelessWidget {
                               startPadding: 15.w,
                             ),
                           ),
+
                         (20.h).ph,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -89,35 +92,62 @@ class SignUpMain extends StatelessWidget {
                           ),
                         ),
                         (20.h).ph,
+                        GetBuilder<SignUpViewController>(
+                          builder: (c) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                  child: ElevatedButton.icon(
+                                    icon: Icon(Icons.person_outline),
+                                    label: Text('User'.tr),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                      controller.selectedRole == 'customer'
+                                          ? Theme.of(context).primaryColor
+                                          : Colors.grey[300],
+                                      foregroundColor:
+                                      controller.selectedRole == 'customer'
+                                          ? Colors.white
+                                          : Colors.black,
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 12.h,
+                                      ),
+                                    ),
+                                    onPressed: () async{
+                                      await  controller.selectRole(role: 'customer');
+                                    },
+                                  ),
+                                ),
+                                SizedBox(width: 10.w),
+                                Expanded(
+                                  child: ElevatedButton.icon(
+                                    icon: Icon(Icons.business_outlined),
+                                    label: Text('Company'.tr),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                      controller.selectedRole == 'admin'
+                                          ? Theme.of(context).primaryColor
+                                          : Colors.grey[300],
+                                      foregroundColor:
+                                      controller.selectedRole == 'admin'
+                                          ? Colors.white
+                                          : Colors.black,
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 12.h,
+                                      ),
+                                    ),
+                                    onPressed: ()async {
+                                      await controller.selectRole(role: 'admin');
+                                    },
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                        (20.h).ph,
                         if (controller.currentIndex.value == 0) ...[
-                          Row(
-                            children: [
-                              CustomTextFormField(
-                                widthContainer: 215.w,
-                                hintText: tr('First Name'),
-                                controller: controller.firstNameController,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return tr('Input your first name');
-                                  }
-                                  return null;
-                                },
-                              ),
-                              const Spacer(),
-                              CustomTextFormField(
-                                widthContainer: 215.w,
-                                hintText: tr('Last Name'),
-                                controller: controller.lastNameController,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return tr('Input your last name');
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ],
-                          ),
-                          (25.h).ph,
                           CustomTextFormField(
                             hintText: tr('Email'),
                             keyboardType: TextInputType.emailAddress,
@@ -195,41 +225,8 @@ class SignUpMain extends StatelessWidget {
                             },
                           ),
                           (10.h).ph,
-                          GetBuilder<SignUpViewController>(
-                            builder: (c) {
-                              return Row(
-                                children: [
-                                  Radio(
-                                    value: "customer",
-                                    groupValue: controller.selectedRole,
-                                    activeColor: AppColors.mainColor,
-                                    onChanged: (value) {
-                                      controller.selectedRole = value!;
-                                      controller.update();
-                                    },
-                                  ),
-                                  const Text(
-                                    "User",
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                  (20.w).pw,
-                                  Radio(
-                                    value: "admin",
-                                    activeColor: AppColors.mainColor,
-                                    groupValue: controller.selectedRole,
-                                    onChanged: (value) {
-                                      controller.selectedRole = value!;
-                                      controller.update();
-                                    },
-                                  ),
-                                  const Text(
-                                    "Admin",
-                                    style: TextStyle(color: Colors.black),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
+                          CompanyForm(controller: controller),
+                          UserForm(controller: controller),
                           (25.h).ph,
                           CustomButton(
                             width: 1.sw,
@@ -261,7 +258,7 @@ class SignUpMain extends StatelessWidget {
                             },
                             child: CustomText(
                               isTextAlign: TextAlign.center,
-                              text: tr('key_login'),
+                              text: 'Login'.tr,
                               textType: TextStyleType.bodyBig,
                               textColor: AppColors.mainColor,
                               fontWeight: FontWeight.bold,

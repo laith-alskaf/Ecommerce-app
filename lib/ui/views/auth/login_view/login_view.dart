@@ -132,7 +132,7 @@ class LoginView extends StatelessWidget {
                       await controller.login();
                     }
                   },
-                  text: tr('key_login'),
+                  text: 'Login'.tr,
                 ),
                 const Spacer(),
                 CustomText(
@@ -156,6 +156,18 @@ class LoginView extends StatelessWidget {
                     textColor: AppColors.mainColor,
                     fontWeight: FontWeight.bold,
                   ),
+                ),
+                (10.h).ph,
+                Divider(),
+                (10.h).ph,
+                CustomButton(
+                  text: 'Continue as Guest'.tr,
+                  buttonTypeEnum: ButtonTypeEnum.normal,
+                  backgroundColor: AppColors.whiteColor,
+                  textColor: AppColors.blackColor,
+                  onPressed: (){
+                    controller.loginAsGuest();
+                  },
                 ),
                 (35.h).ph,
               ],

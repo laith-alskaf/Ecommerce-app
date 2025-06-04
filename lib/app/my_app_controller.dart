@@ -4,6 +4,7 @@ import 'package:simple_e_commerce/core/services/base_controller.dart';
 import 'package:simple_e_commerce/core/utils/general_util.dart';
 
 class MyAppController extends BaseController {
+  late String role;
   ConnectivityStatus connectivityStatus = ConnectivityStatus.ONLINE;
   RxBool isOnline = false.obs;
 
@@ -21,9 +22,14 @@ class MyAppController extends BaseController {
     });
   }
 
+  initAppRout() {
+    role = storage.getRole();
+  }
+
   @override
   void onInit() async {
     super.onInit();
+    initAppRout();
     listenForConnectivityStatus();
   }
 }

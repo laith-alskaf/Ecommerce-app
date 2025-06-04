@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_e_commerce/core/enums/bottom_navigation.dart';
+import 'package:simple_e_commerce/core/utils/general_util.dart';
 import 'package:simple_e_commerce/ui/shared/colors.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
 import 'package:get/get.dart';
@@ -40,8 +40,10 @@ PreferredSizeWidget customAppBar({
                 Icons.person_outline_rounded,
                 color: AppColors.whiteColor,
               ),
-              onPressed: () {
-                Get.to(() => ProfileView());
+              onPressed: ()async {
+                if (await myAppController.hasPermissionToUse()) {
+                  Get.to(() => ProfileView());
+                }
               },
             ),
           ],

@@ -26,13 +26,15 @@ class LoginViewController extends BaseController {
                 );
               },
               (r) async {
+                myAppController.initAppRout();
                 CustomToast.showMessage(
                   message: r,
                   messageType: MessageType.SUCCESS,
                 );
-                if (storage.getRole() == "customer") {
+                if (myAppController.role == "customer" ||
+                    myAppController.role == "guest") {
                   Get.off(() => MainView());
-                } else if (storage.getRole() == "admin") {
+                } else if (myAppController.role == "admin") {
                   Get.off(() => HomeViewAdmin());
                 }
                 Get.delete<LoginViewController>();
@@ -40,5 +42,17 @@ class LoginViewController extends BaseController {
             );
           }),
     );
+  }
+
+  loginAsGuest() {
+    storage.setRole('guest');
+    myAppController.initAppRout();
+    Get.off(() => MainView());
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    storage.clearPreference();
   }
 }

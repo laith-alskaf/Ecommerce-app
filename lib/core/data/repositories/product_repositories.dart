@@ -10,7 +10,7 @@ import 'package:simple_e_commerce/core/translation/app_translation.dart';
 import 'package:simple_e_commerce/core/utils/network_utils.dart';
 
 class ProductRepositories {
-  static Future<Either<String, List<ProductModel>>> getProducts({
+  static Future<Either<String, ({List<ProductModel> products, int totalPages})>> getProducts({
     int page = 1,
     int limit = 10,
   }) async {
@@ -33,7 +33,8 @@ class ProductRepositories {
             commonResponse.data!["products"].forEach((element) {
               resultList.add(ProductModel.fromJson(element));
             });
-            return Right(resultList);
+            int totalPages = commonResponse.data!["totalPages"] as int;
+            return Right((products: resultList, totalPages: totalPages));
           } else {
             return Left(commonResponse.message ?? '');
           }

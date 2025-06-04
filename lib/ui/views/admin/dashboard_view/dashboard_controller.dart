@@ -47,21 +47,23 @@ class DashboardController extends BaseController {
     productsMine.clear();
     totalOrders = 0;
     await runLoadingFutureFunction(
-      function: ProductRepositories.getProductsMine().then((value) {
-        value.fold(
-          (l) {
-            CustomToast.showMessage(
-              message: l,
-              messageType: MessageType.REJECTED,
-            );
-          },
-          (r) {
-            productsMine.addAll(r);
-            totalProducts = productsMine.length;
-            update();
-          },
-        );
-      }),
+      function: () async {
+        await ProductRepositories.getProductsMine().then((value) {
+          value.fold(
+            (l) {
+              CustomToast.showMessage(
+                message: l,
+                messageType: MessageType.REJECTED,
+              );
+            },
+            (r) {
+              productsMine.addAll(r);
+              totalProducts = productsMine.length;
+              update();
+            },
+          );
+        });
+      },
     );
   }
 
@@ -82,72 +84,76 @@ class DashboardController extends BaseController {
     Map<String, dynamic> productJson = product.toJson();
     print(productJson);
     await runLoadingFutureFunction(
-      function: ProductRepositories.createProduct(
-        product: productJson,
-        image: imageFile,
-      ).then((value) {
-        value.fold(
-          (l) {
-            CustomToast.showMessage(
-              message: l,
-              messageType: MessageType.REJECTED,
-            );
-            update();
-          },
-          (r) async {
-            print(r);
-            await getALlProductsMine();
-            Get.back();
-            showSnackBar(title: 'Item added successfully');
-            update();
-          },
-        );
-      }),
+      function: () async {
+        await ProductRepositories.createProduct(
+          product: productJson,
+          image: imageFile,
+        ).then((value) {
+          value.fold(
+            (l) {
+              CustomToast.showMessage(
+                message: l,
+                messageType: MessageType.REJECTED,
+              );
+              update();
+            },
+            (r) async {
+              print(r);
+              await getALlProductsMine();
+              Get.back();
+              showSnackBar(title: 'Item added successfully');
+              update();
+            },
+          );
+        });
+      },
     );
   }
 
   Future searchProducts({required String title}) async {
     productsMine.clear();
     await runLoadingFutureFunction(
-      function: ProductRepositories.searchProduct(
-        title: title
-      ).then((value) {
-        value.fold(
-          (l) {
-            CustomToast.showMessage(
-              message: l,
-              messageType: MessageType.REJECTED,
-            );
-          },
-          (r) {
-            productsMine.addAll(r);
-            update();
-          },
-        );
-      }),
+      function: () async {
+        await ProductRepositories.searchProduct(title: title).then((value) {
+          value.fold(
+            (l) {
+              CustomToast.showMessage(
+                message: l,
+                messageType: MessageType.REJECTED,
+              );
+            },
+            (r) {
+              productsMine.addAll(r);
+              update();
+            },
+          );
+        });
+      },
     );
   }
 
   Future deleteProduct({required ProductModel product}) async {
     productsMine.clear();
     await runLoadingFutureFunction(
-      function: ProductRepositories.deleteProduct(productId: product.id!).then((
-        value,
-      ) {
-        value.fold(
-          (l) {
-            CustomToast.showMessage(
-              message: l,
-              messageType: MessageType.REJECTED,
-            );
-          },
-          (r) async {
-            Get.back();
-            await getALlProductsMine();
-            update();
-          },
-        );
-      }),
+      function: () async {
+        await ProductRepositories.deleteProduct(productId: product.id!).then((
+          value,
+        ) {
+          value.fold(
+            (l) {
+              CustomToast.showMessage(
+                message: l,
+                messageType: MessageType.REJECTED,
+              );
+            },
+            (r) async {
+              Get.back();
+              await getALlProductsMine();
+              update();
+            },
+          );
+        });
+      },
     );
   }
 

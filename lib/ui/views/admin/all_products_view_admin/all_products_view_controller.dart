@@ -37,25 +37,27 @@ class AllProductsViewController extends BaseController {
     allCategoryName.clear();
     allCategory.clear();
     await runLoadingFutureFunction(
-      function: CategoryRepositories.allCategory().then((value) {
-        value.fold(
-          (l) {
-            CustomToast.showMessage(
-              message: l,
-              messageType: MessageType.REJECTED,
-            );
-          },
-          (r) async {
-            await getALlProducts();
-            allCategoryName.add('All');
-            for (var value in r) {
-              allCategoryName.add(value.name!);
-            }
-            allCategory.addAll(r);
-            update();
-          },
-        );
-      }),
+      function: () async {
+        await CategoryRepositories.allCategory().then((value) {
+          value.fold(
+            (l) {
+              CustomToast.showMessage(
+                message: l,
+                messageType: MessageType.REJECTED,
+              );
+            },
+            (r) async {
+              await getALlProducts();
+              allCategoryName.add('All');
+              for (var value in r) {
+                allCategoryName.add(value.name!);
+              }
+              allCategory.addAll(r);
+              update();
+            },
+          );
+        });
+      },
     );
   }
 
@@ -63,22 +65,24 @@ class AllProductsViewController extends BaseController {
     selectedNum == 0 ? selectCategory = '' : null;
     allProducts.value = <ProductModel>[];
     await runLoadingFutureFunction(
-      function: ProductRepositories.getProductsByCategory(
-        categoryId: categoryID,
-      ).then((value) {
-        value.fold(
-          (l) {
-            CustomToast.showMessage(
-              message: l,
-              messageType: MessageType.REJECTED,
-            );
-          },
-          (r) {
-            allProducts.addAll(r);
-            update();
-          },
-        );
-      }),
+      function: () async {
+        await ProductRepositories.getProductsByCategory(
+          categoryId: categoryID,
+        ).then((value) {
+          value.fold(
+            (l) {
+              CustomToast.showMessage(
+                message: l,
+                messageType: MessageType.REJECTED,
+              );
+            },
+            (r) {
+              allProducts.addAll(r);
+              update();
+            },
+          );
+        });
+      },
     );
   }
 

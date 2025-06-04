@@ -99,7 +99,7 @@ class UserRepository {
           CommonResponse<Map<String, dynamic>> commonResponse =
               CommonResponse.fromJson(response);
           if (commonResponse.getStatus) {
-            storage.clearPreference();
+
             return Right(commonResponse.message ?? '');
           } else {
             return Left(commonResponse.message ?? '');
