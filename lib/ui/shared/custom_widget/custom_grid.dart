@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
-import 'package:simple_e_commerce/ui/shared/colors.dart';
+import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_cached_image.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/show_alert_snackbar.dart';

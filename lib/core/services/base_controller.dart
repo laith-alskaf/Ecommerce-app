@@ -8,13 +8,13 @@ import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/enums/operation_type.dart';
 import 'package:simple_e_commerce/core/enums/request_status.dart';
 import 'package:simple_e_commerce/core/utils/general_util.dart';
+import 'package:simple_e_commerce/presentation/views/auth/login_view/login_view.dart';
+import 'package:simple_e_commerce/presentation/views/auth/sign_up_view/sign_up_main.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_show_snackbar.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/show_Login_Required_Dialog.dart';
-import 'package:simple_e_commerce/ui/views/auth/login_view/login_view.dart';
-import 'package:simple_e_commerce/ui/views/auth/sign_up_view/sign_up_main.dart';
+import 'package:simple_e_commerce/ui/shared/utils.dart';
 
-import '../../ui/shared/utils.dart';
 
 class BaseController extends GetxController {
   Rx<RequestStatus> requestStatus = RequestStatus.DEFUALT.obs;
@@ -25,7 +25,7 @@ class BaseController extends GetxController {
   int currentPage = 1;
   final int pageSize = 10;
   bool hasMoreProducts = true;
-  final RxBool isLoadingMore = false.obs;
+  RxBool isLoadingMore = false.obs;
 
   set setRequestStatus(RequestStatus value) {
     status.value = value;
@@ -36,7 +36,7 @@ class BaseController extends GetxController {
     await runLoadingFutureFunction(
       function: () async {
         await ProductRepositories.getProducts(
-          page: page ?? 1,
+          page: page ?? currentPage,
           limit: limit ?? pageSize,
         ).then((value) {
           value.fold(
@@ -48,12 +48,14 @@ class BaseController extends GetxController {
             },
             (r) {
               allProducts.addAll(r.products);
-              // currentPage++;
-              // if (r.totalPages >= currentPage) {
-              //   hasMoreProducts = false;
-              // } else {
-              //   hasMoreProducts = true;
-              // }
+
+              if (r.totalPages <= currentPage) {
+                hasMoreProducts = false;
+                currentPage=0;
+              } else {
+                currentPage++;
+                hasMoreProducts = true;
+              }
             },
           );
           update();
@@ -107,20 +109,20 @@ class BaseController extends GetxController {
   bool hasPermissionToUse() {
     String role = myAppController.role;
     if (role == 'guest') {
-      showLoginRequiredDialog(
-        message:
-            "To use this feature and access all app services, please log in or create a new account.",
-        onLoginPressed: () {
-          Get.back();
-          storage.clearPreference();
-          Get.offAll(() => LoginView());
-        },
-        onSignUpPressed: () {
-          Get.back();
-          storage.clearPreference();
-          Get.offAll(() => SignUpMain());
-        },
-      );
+      // showLoginRequiredDialog(
+      //   message:
+      //       "To use this feature and access all app services, please log in or create a new account.",
+      //   onLoginPressed: () {
+      //     Get.back();
+      //     storage.clearPreference();
+      //     Get.offAll(() => LoginView());
+      //   },
+      //   onSignUpPressed: () {
+      //     Get.back();
+      //     storage.clearPreference();
+      //     Get.offAll(() => SignUpMain());
+      //   },
+      // );
       return false;
     } else {
       return true;

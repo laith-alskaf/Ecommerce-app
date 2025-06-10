@@ -1,10 +1,12 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:simple_e_commerce/core/translation/app_translation.dart';
-import 'package:simple_e_commerce/core/utils/general_util.dart';
-import 'package:simple_e_commerce/ui/views/splash_screen_view/splash_screen_view.dart';
+import 'package:simple_e_commerce/app/my_app_cubit.dart';
+import 'package:simple_e_commerce/presentation/controllers/auth/login/login_cubit.dart';
+import 'package:simple_e_commerce/presentation/controllers/main/main_cubit.dart';
+import 'package:simple_e_commerce/presentation/views/splash_screen_view/splash_screen_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -16,18 +18,20 @@ class MyApp extends StatelessWidget {
       ensureScreenSize: true,
       minTextAdapt: true,
       splitScreenMode: false,
-      child: GetMaterialApp(
-        defaultTransition:
-            GetPlatform.isAndroid
-                ? Transition.leftToRight
-                : Transition.cupertino,
-        transitionDuration: const Duration(microseconds: 300),
-        builder: BotToastInit(),
-        navigatorObservers: [BotToastNavigatorObserver()],
-        debugShowCheckedModeBanner: false,
-        title: 'Ecommerce App',
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: SplashScreenView(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<MyAppCubit>(create: (context) => MyAppCubit()),
+          BlocProvider<MainCubit>(create: (context) => MainCubit()),
+        ],
+        child: GetMaterialApp(
+          transitionDuration: const Duration(microseconds: 300),
+          builder: BotToastInit(),
+          navigatorObservers: [BotToastNavigatorObserver()],
+          debugShowCheckedModeBanner: false,
+          title: 'Ecommerce App',
+          theme: ThemeData(primarySwatch: Colors.blue),
+          home: SplashScreenView(),
+        ),
       ),
     );
   }

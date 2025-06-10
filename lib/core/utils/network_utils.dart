@@ -124,15 +124,15 @@ class NetworkUtil {
       var request =
       http.MultipartRequest('POST', Uri.https(baseUrl, url, params));
 
-      var _filesKeyList = files!.keys.toList();
-      var _filesNameList = files.values.toList();
-      for (int i = 0; i < _filesKeyList.length; i++) {
-        if (_filesNameList[i].isNotEmpty) {
+      var filesKeyList = files!.keys.toList();
+      var filesNameList = files.values.toList();
+      for (int i = 0; i < filesKeyList.length; i++) {
+        if (filesNameList[i].isNotEmpty) {
           var multipartFile = http.MultipartFile.fromPath(
-            _filesKeyList[i],
-            _filesNameList[i],
-            filename: path.basename(_filesNameList[i]),
-            contentType: getContentType(_filesNameList[i]),
+            filesKeyList[i],
+            filesNameList[i],
+            filename: path.basename(filesNameList[i]),
+            contentType: getContentType(filesNameList[i]),
           );
           request.files.add(await multipartFile);
         }

@@ -1,19 +1,19 @@
 import 'dart:convert';
-
-import 'package:get/get.dart';
+import 'dart:developer';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_e_commerce/core/data/models/api/cart_model.dart';
 import 'package:simple_e_commerce/core/data/models/api/user_model.dart';
 
 class SharedPreferenceRepositories {
-  static SharedPreferences globalSharedPreferences = Get.find();
+  final SharedPreferences globalSharedPreferences;
+  SharedPreferenceRepositories({required this.globalSharedPreferences});
 
   //!----Keys----
   String tokenKey = 'token';
   String languageKey = 'language';
   String roleKey = 'role';
   String userInfoKey = 'user-info';
-  String PREF_CART_LIST = 'cart_list';
+  String carListKey = 'cart_list';
   String fcmToken = 'fcm_token';
 
   void setToken(String token) {
@@ -82,14 +82,14 @@ class SharedPreferenceRepositories {
   void setCartList(List<CartModel> list) {
     setPreference(
       dataType: DataType.STRING,
-      key: PREF_CART_LIST,
+      key: carListKey,
       value: CartModel.encode(list),
     );
   }
 
   List<CartModel> getCartList() {
-    if (globalSharedPreferences.containsKey(PREF_CART_LIST)) {
-      return CartModel.decode(getPreference(key: PREF_CART_LIST));
+    if (globalSharedPreferences.containsKey(carListKey)) {
+      return CartModel.decode(getPreference(key: carListKey));
     } else {
       return [];
     }
@@ -126,6 +126,7 @@ class SharedPreferenceRepositories {
 
   clearPreference() {
     globalSharedPreferences.clear();
+    log('=======> CLear clearPreference');
   }
 }
 

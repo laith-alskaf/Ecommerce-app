@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:simple_e_commerce/ui/shared/colors.dart';
+import 'package:simple_e_commerce/core/utils/colors.dart';
 
 class CustomOtpField extends StatelessWidget {
   const CustomOtpField({

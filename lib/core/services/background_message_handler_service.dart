@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
+import 'package:simple_e_commerce/presentation/views/customer/home/product_details_view/product_details_view.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/notification_snack.dart';
-import 'package:simple_e_commerce/ui/views/customer/home/product_details_view/product_details_view.dart';
 
 abstract class MessageHandlerNotification {
   void showInApp({required RemoteMessage message});

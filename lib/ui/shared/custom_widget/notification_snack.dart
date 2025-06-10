@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:simple_e_commerce/ui/shared/colors.dart';
+import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_button.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
 
 showNotificationSnack({
   required title,

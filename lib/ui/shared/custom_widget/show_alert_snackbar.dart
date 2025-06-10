@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:simple_e_commerce/ui/shared/colors.dart';
+import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_button.dart';
 import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
 import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
-import 'package:simple_e_commerce/ui/views/admin/dashboard_view/dashboard_controller.dart';
+import 'package:simple_e_commerce/presentation/views/admin/dashboard_view/dashboard_controller.dart';
 
 import '../../../core/enums/request_status.dart';
 

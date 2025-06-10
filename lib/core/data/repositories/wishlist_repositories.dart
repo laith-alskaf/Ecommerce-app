@@ -1,14 +1,10 @@
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
 import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
 import 'package:simple_e_commerce/core/data/models/common_respons.dart';
-import 'package:simple_e_commerce/core/data/network/endpoints/product_endpoint.dart';
 import 'package:simple_e_commerce/core/data/network/endpoints/wishlist_endpoints.dart';
 import 'package:simple_e_commerce/core/data/network/network_config.dart';
 import 'package:simple_e_commerce/core/enums/request_type.dart';
 import 'package:simple_e_commerce/core/translation/app_translation.dart';
-import 'package:simple_e_commerce/core/utils/general_util.dart';
 import 'package:simple_e_commerce/core/utils/network_utils.dart';
 
 class WishlistRepositories {

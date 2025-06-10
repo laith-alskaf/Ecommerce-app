@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_e_commerce/core/utils/general_util.dart';
-import 'package:simple_e_commerce/ui/shared/colors.dart';
+import 'package:simple_e_commerce/core/utils/colors.dart';
 
 enum TextStyleType {
   title, // 30px  // title home views

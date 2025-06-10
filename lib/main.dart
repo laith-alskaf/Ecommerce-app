@@ -1,17 +1,13 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_e_commerce/app/my_app.dart';
 import 'package:simple_e_commerce/app/my_app_controller.dart';
-import 'package:simple_e_commerce/core/data/repositories/storage_repositories.dart';
 import 'package:simple_e_commerce/core/services/background_message_handler_service.dart';
 import 'package:simple_e_commerce/core/services/connectivity_service.dart';
-import 'package:simple_e_commerce/core/services/notification_service.dart';
-import 'package:simple_e_commerce/firebase_options.dart';
+import 'package:simple_e_commerce/app/di/service_locator.dart' as di; // Import Service Locator
 
 @pragma('vm:entry-point')
 Future<void> _handleBackgroundMessage(RemoteMessage message) async {
@@ -21,6 +17,8 @@ Future<void> _handleBackgroundMessage(RemoteMessage message) async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await di.init(); // Initialize GetIt Service Locator
+
   await AwesomeNotifications().initialize(null, [
     NotificationChannel(
       channelKey: 'basic_channel',
@@ -31,8 +29,8 @@ Future<void> main() async {
     ),
   ], debug: true);
   FirebaseMessaging.onBackgroundMessage(_handleBackgroundMessage);
-  await initApp();
-  Get.put(SharedPreferenceRepositories());
+  await initApp(); // initApp might have Get.put calls, ensure DI is ready
+  // Get.put(SharedPreferenceRepositories());
   Get.put(ConnectivityService());
   Get.put(MyAppController());
   runApp(const MyApp());
@@ -43,16 +41,6 @@ Future<void> initApp() async {
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);
-  try {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-    Get.put(NotificationService());
-  } catch (e) {
-    (e);
-  }
-  await Get.putAsync<SharedPreferences>(() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs;
-  });
+
+
 }
