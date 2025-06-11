@@ -8,8 +8,8 @@ import 'package:simple_e_commerce/presentation/views/customer/home/product_detai
 import 'package:simple_e_commerce/presentation/views/customer/home/wishlist_view/wishlist_controller.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/wishlist_view/wishlist_widget/wishlist_empty.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/wishlist_view/wishlist_widget/wishlist_item_card.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_loading_spinkit.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_loading_spinkit.dart';
 
 class WishlistView extends StatelessWidget {
   const WishlistView({super.key});

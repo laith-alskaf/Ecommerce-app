@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_e_commerce/core/data/models/api/user_model.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/profile_view/profile_controller.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
 
 Widget customUserProfileHeader(UserModel user, ProfileController controller) {
   String fullName = user.userName ?? ''.trim();

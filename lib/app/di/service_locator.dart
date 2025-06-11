@@ -5,7 +5,7 @@ import 'package:simple_e_commerce/app/my_app_cubit.dart';
 import 'package:simple_e_commerce/core/data/repositories/storage_repositories.dart';
 import 'package:simple_e_commerce/core/network/network_info.dart';
 import 'package:simple_e_commerce/core/services/notification_service.dart';
-import 'package:simple_e_commerce/core/utils/network_utils.dart';
+import 'package:simple_e_commerce/core/network/network_utils.dart';
 import 'package:simple_e_commerce/data/datasources/auth/remote/auth_remote_datasource.dart';
 import 'package:simple_e_commerce/data/datasources/auth/remote/auth_remote_datasource_impl.dart';
 import 'package:simple_e_commerce/data/datasources/categories/category_remote_datasource.dart';
@@ -18,12 +18,6 @@ import 'package:simple_e_commerce/data/repositories/produc_repository_impl.dart'
 import 'package:simple_e_commerce/domain/repositories/auth_repository.dart';
 import 'package:simple_e_commerce/domain/repositories/category_repository.dart';
 import 'package:simple_e_commerce/domain/repositories/product_repository.dart';
-import 'package:simple_e_commerce/domain/usecases/auth/login_usecase.dart';
-import 'package:simple_e_commerce/domain/usecases/auth/sendcode_usecase.dart';
-import 'package:simple_e_commerce/domain/usecases/auth/signup_usecase.dart';
-import 'package:simple_e_commerce/domain/usecases/auth/verify_usecase.dart';
-import 'package:simple_e_commerce/domain/usecases/category/get_all_categories_usecase.dart';
-import 'package:simple_e_commerce/domain/usecases/product/get_all_product_usecase.dart';
 import 'package:simple_e_commerce/firebase_options.dart';
 import 'package:simple_e_commerce/presentation/controllers/auth/login/login_cubit.dart';
 import 'package:simple_e_commerce/presentation/controllers/auth/signup/signup_cubit.dart';
@@ -33,6 +27,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:simple_e_commerce/presentation/controllers/main/main_cubit.dart';
 import 'package:simple_e_commerce/presentation/controllers/products/products_cubit.dart';
 import 'package:get/get.dart';
+
+import '../../domain/usecases/auth/auth_usecase.dart';
+import '../../domain/usecases/category/category_usecase.dart';
+import '../../domain/usecases/product/product_usecase.dart';
 
 final sl = GetIt.instance;
 
@@ -56,16 +54,38 @@ Future<void> registerSharedPreferences() async {
 
 registerUseCases() {
   // UseCases
+  // ===> Auth
+  sl.registerLazySingleton<LoginUseCase>(() => LoginUseCase(sl()));
+  sl.registerLazySingleton<SignUpUseCase>(() => SignUpUseCase(sl()));
+  sl.registerLazySingleton<VerifyUseCase>(() => VerifyUseCase(sl()));
+  sl.registerLazySingleton<SendCodeUseCase>(() => SendCodeUseCase(sl()));
+  sl.registerLazySingleton<ResetPasswordUseCase>(
+    () => ResetPasswordUseCase(sl()),
+  );
+  // ===> Category
   sl.registerLazySingleton<GetAllCategoriesUsecase>(
     () => GetAllCategoriesUsecase(sl()),
   );
+  // ===> Product
   sl.registerLazySingleton<GetAllProductsUseCase>(
     () => GetAllProductsUseCase(sl()),
   );
-  sl.registerLazySingleton<LoginUseCase>(() => LoginUseCase(sl()));
-  sl.registerLazySingleton<SignUpUseCase>(() => SignUpUseCase(sl()));
-  sl.registerLazySingleton(() => VerifyUsecase(sl()));
-  sl.registerLazySingleton(() => SendCodeUseCase(sl()));
+  sl.registerLazySingleton<GetProductsByCategoryUseCase>(
+        () => GetProductsByCategoryUseCase(sl()),
+  );
+  sl.registerLazySingleton<GetProductMineUseCase>(
+    () => GetProductMineUseCase(sl()),
+  );
+  sl.registerLazySingleton<SearchProductUseCase>(
+    () => SearchProductUseCase(sl()),
+  );
+  sl.registerLazySingleton<DeleteProductUseCase>(
+    () => DeleteProductUseCase(sl()),
+  );
+  sl.registerLazySingleton<CreateProductUseCase>(
+    () => CreateProductUseCase(sl()),
+  );
+
 }
 
 registerRepositories() {
@@ -74,7 +94,6 @@ registerRepositories() {
     () => CategoryRepositoryImpl(
       remoteDataSource: sl(),
       networkInfo: sl(),
-      // localDataSource: sl(),
     ),
   );
 
@@ -86,10 +105,7 @@ registerRepositories() {
     ),
   );
   sl.registerLazySingleton<AuthRepository>(
-    () => AuthRepositoryImpl(
-      remoteDataSource: sl(),
-      networkInfo: sl(),
-    ),
+    () => AuthRepositoryImpl(remoteDataSource: sl(), networkInfo: sl()),
   );
 }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_e_commerce/presentation/controllers/auth/signup/signup_cubit.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
 
 class CustomRowInfo extends StatelessWidget {
   const CustomRowInfo({

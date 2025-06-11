@@ -6,7 +6,7 @@ import 'package:simple_e_commerce/core/services/base_controller.dart';
 import 'package:simple_e_commerce/presentation/views/auth/forget_password_view/reset_password_view/reset_password_view.dart';
 import 'package:simple_e_commerce/presentation/views/auth/forget_password_view/verify_view/verify_view.dart';
 import 'package:simple_e_commerce/presentation/views/auth/login_view/login_view.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_toast.dart';
 //Done
 class ForgePasswordController extends BaseController {
   TextEditingController emailController = TextEditingController();

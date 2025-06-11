@@ -9,7 +9,7 @@ import 'package:simple_e_commerce/core/params/auth/send_code_params.dart';
 import 'package:simple_e_commerce/core/params/auth/signup_params.dart';
 import 'package:simple_e_commerce/core/params/auth/verify_params.dart';
 import 'package:simple_e_commerce/core/utils/general_util.dart';
-import 'package:simple_e_commerce/core/utils/network_utils.dart';
+import 'package:simple_e_commerce/core/network/network_utils.dart';
 import 'package:simple_e_commerce/data/datasources/auth/remote/auth_remote_datasource.dart';
 import 'package:simple_e_commerce/data/models/user_model.dart';
 

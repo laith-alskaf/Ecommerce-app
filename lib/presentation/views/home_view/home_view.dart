@@ -4,11 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart'; // Import BlocProvider
 import 'package:get/get.dart';
 import 'package:simple_e_commerce/app/di/service_locator.dart'; // Import Service Locator (sl)
 import 'package:simple_e_commerce/presentation/controllers/category/categories_cubit.dart';
-import 'package:simple_e_commerce/presentation/widgets/categories_list_widget.dart';
+import 'package:simple_e_commerce/presentation/views/home_view/home_view_widget/categories_list_widget.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/views/home_view/home_view_controller.dart';
 import 'package:simple_e_commerce/presentation/views/home_view/home_view_widget/products_section.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
 
 
 // ignore: must_be_immutable

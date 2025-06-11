@@ -6,7 +6,7 @@ import 'package:simple_e_commerce/core/data/repositories/product_repositories.da
 import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/services/base_controller.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_toast.dart';
 
 class AllProductsViewController extends BaseController {
   Color clickButton = AppColors.blueColor;

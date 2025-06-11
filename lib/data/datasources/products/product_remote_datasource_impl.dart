@@ -5,7 +5,7 @@ import 'package:simple_e_commerce/core/enums/request_type.dart';
 import 'package:simple_e_commerce/core/error/exceptions.dart';
 import 'package:simple_e_commerce/core/params/product/create_product_params.dart';
 import 'package:simple_e_commerce/core/params/product/get_product_pagination_params.dart';
-import 'package:simple_e_commerce/core/utils/network_utils.dart';
+import 'package:simple_e_commerce/core/network/network_utils.dart';
 import 'package:simple_e_commerce/data/datasources/products/product_remote_datasource.dart';
 import 'package:simple_e_commerce/data/models/product_model.dart';
 

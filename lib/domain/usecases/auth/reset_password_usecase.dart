@@ -4,10 +4,10 @@ import 'package:simple_e_commerce/core/params/auth/reset_password_params.dart';
 import 'package:simple_e_commerce/core/usecases/usecase.dart';
 import 'package:simple_e_commerce/domain/repositories/auth_repository.dart';
 
-class ResetPasswordUsecase implements Usecase<String, ResetPasswordParams> {
+class ResetPasswordUseCase implements Usecase<String, ResetPasswordParams> {
   final AuthRepository repository;
 
-  ResetPasswordUsecase(this.repository);
+  ResetPasswordUseCase(this.repository);
 
   @override
   Future<Either<Failure, String>> call(

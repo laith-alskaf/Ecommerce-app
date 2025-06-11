@@ -11,12 +11,11 @@ import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/controllers/main/main_cubit.dart';
 import 'package:simple_e_commerce/presentation/views/auth/login_view/login_view.dart';
 import 'package:simple_e_commerce/presentation/views/auth/sign_up_view/sign_up_main.dart';
-import 'package:simple_e_commerce/presentation/views/customer/home/main_controller.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/products_view/products_view.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/wishlist_view/wishlist_view.dart';
 import 'package:simple_e_commerce/presentation/views/home_view/home_view.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_app_bar.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/show_Login_Required_Dialog.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_app_bar.dart';
+import 'package:simple_e_commerce/presentation/widgets/show_Login_Required_Dialog.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});

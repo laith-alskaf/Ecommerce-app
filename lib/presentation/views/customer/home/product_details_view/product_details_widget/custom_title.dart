@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
 
 class CustomTitle extends StatelessWidget {
   const CustomTitle({super.key, required this.title});

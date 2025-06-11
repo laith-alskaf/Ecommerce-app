@@ -5,10 +5,10 @@ import 'package:simple_e_commerce/core/translation/app_translation.dart';
 import 'package:simple_e_commerce/core/utils/string_urtil.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/views/auth/forget_password_view/forget_password_controller.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_button.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text_field.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_button.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text_field.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
 import '../../../../core/utils/general_util.dart';
 
 class ForgetPasswordView extends StatelessWidget {

@@ -12,8 +12,8 @@ part 'forgot_password_state.dart';
 
 class ForgotPasswordCubit extends Cubit<ForgotPasswordState> {
   final SendCodeUseCase sendCodeUseCase;
-  final VerifyUsecase forgotPasswordUseCase;
-  final ResetPasswordUsecase resetPasswordUseCase;
+  final VerifyUseCase forgotPasswordUseCase;
+  final ResetPasswordUseCase resetPasswordUseCase;
 
   ForgotPasswordCubit(
     this.sendCodeUseCase,

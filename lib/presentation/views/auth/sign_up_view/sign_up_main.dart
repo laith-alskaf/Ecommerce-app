@@ -15,9 +15,9 @@ import 'package:simple_e_commerce/presentation/views/auth/sign_up_view/sign_up_w
 import 'package:simple_e_commerce/presentation/views/auth/sign_up_view/sign_up_widget/custom_dilog.dart';
 import 'package:simple_e_commerce/presentation/views/auth/sign_up_view/sign_up_widget/user_form.dart';
 import 'package:simple_e_commerce/presentation/views/auth/sign_up_view/sign_up_widget/verify.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_button.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text_field.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_button.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text_field.dart';
 
 class SignUpMainWrapper extends StatelessWidget {
   const SignUpMainWrapper({super.key});

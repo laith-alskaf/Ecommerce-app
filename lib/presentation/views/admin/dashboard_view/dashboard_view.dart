@@ -7,7 +7,7 @@ import 'package:simple_e_commerce/core/enums/request_status.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/views/admin/dashboard_view/dashboard_controller.dart';
 import 'package:simple_e_commerce/presentation/views/admin/dashboard_view/my_products_view/my_products_view.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
 
 import 'custom_widget_dashboard/custom_container_action.dart';
 

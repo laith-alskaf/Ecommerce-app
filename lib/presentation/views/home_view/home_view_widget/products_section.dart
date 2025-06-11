@@ -4,12 +4,12 @@ import 'package:simple_e_commerce/core/enums/request_status.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/product_details_view/product_details_view.dart';
 import 'package:simple_e_commerce/presentation/views/home_view/home_view_controller.dart';
 import 'package:get/get.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_button.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_grid.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_loading_spinkit.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
-import 'package:simple_e_commerce/ui/shared/utils.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_button.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_grid.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_loading_spinkit.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
+import 'package:simple_e_commerce/core/utils/utils.dart';
 
 class ProductsSection extends StatelessWidget {
   final HomeViewController homeController;

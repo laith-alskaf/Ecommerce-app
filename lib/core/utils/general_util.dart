@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_e_commerce/core/services/connectivity_service.dart';
 import 'package:simple_e_commerce/app/my_app_controller.dart';
 import 'package:get/get.dart';
-import 'package:simple_e_commerce/ui/shared/utils.dart';
+import 'package:simple_e_commerce/core/utils/utils.dart';
 
 // SharedPreferenceRepositories get storage =>
 //     Get.find<SharedPreferenceRepositories>();

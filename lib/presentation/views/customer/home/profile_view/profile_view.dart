@@ -10,9 +10,9 @@ import 'package:simple_e_commerce/presentation/views/customer/home/profile_view/
 import 'package:simple_e_commerce/presentation/views/customer/home/profile_view/profile_widget/list_divider.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/profile_view/profile_widget/menu_profile_item.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/profile_view/profile_widget/user_profile_header.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_app_bar.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart'; // مسارك
+import 'package:simple_e_commerce/presentation/widgets/custom_app_bar.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});

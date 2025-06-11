@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:simple_e_commerce/core/enums/drawer_enum.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
 
 class CustomDrawer extends StatelessWidget {
   final Rx<DrawerEnum> selectedItem;

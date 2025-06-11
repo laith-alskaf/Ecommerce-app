@@ -11,16 +11,6 @@ class SignUpState extends Equatable {
 
   @override
   List<Object> get props => [role, expandedList];
-  showToastMessageSUCCESS(String message) {
-    CustomToast.showMessage(message: message, messageType: MessageType.SUCCESS);
-  }
-
-  showToastMessageError(String message) {
-    CustomToast.showMessage(
-      message: message,
-      messageType: MessageType.REJECTED,
-    );
-  }
 
   SignUpState copyWith({String? role, List<bool>? expandedList}) {
     return SignUpState(
@@ -36,6 +26,7 @@ class SignUpInitial extends SignUpState {}
 final class ToggleShowPassState extends SignUpState {
   final bool showPass;
   final bool showConfirmPass;
+
   const ToggleShowPassState({
     this.showPass = true,
     this.showConfirmPass = true,
@@ -49,16 +40,14 @@ class SignUpLoading extends SignUpState {}
 
 class SignUpSuccess extends SignUpState {
   final String message;
-  SignUpSuccess({required this.message}) {
-    super.showToastMessageSUCCESS(message);
-  }
+
+  const SignUpSuccess({required this.message});
 }
 
 class SignUpError extends SignUpState {
   final String message;
-  SignUpError({required this.message}) {
-    super.showToastMessageError(message);
-  }
+
+  const SignUpError({required this.message});
 }
 
 //Verify
@@ -68,16 +57,14 @@ class VerifyLoading extends SignUpState {}
 
 class VerifySuccess extends SignUpState {
   final String message;
-  VerifySuccess({required this.message}) {
-    super.showToastMessageSUCCESS(message);
-  }
+
+  const VerifySuccess({required this.message});
 }
 
 class VerifyError extends SignUpState {
   final String message;
-  VerifyError({required this.message}) {
-    super.showToastMessageError(message);
-  }
+
+  const VerifyError({required this.message});
 }
 
 //SendCode
@@ -87,14 +74,12 @@ class SendCodeLoading extends SignUpState {}
 
 class SendCodeSuccess extends SignUpState {
   final String message;
-  SendCodeSuccess({required this.message}) {
-    super.showToastMessageSUCCESS(message);
-  }
+
+  const SendCodeSuccess({required this.message});
 }
 
 class SendCodeError extends SignUpState {
   final String message;
-  SendCodeError({required this.message}) {
-    super.showToastMessageError(message);
-  }
+
+  const SendCodeError({required this.message});
 }

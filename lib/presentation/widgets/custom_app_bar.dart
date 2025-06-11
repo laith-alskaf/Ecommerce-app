@@ -3,7 +3,7 @@ import 'package:simple_e_commerce/core/utils/general_util.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:get/get.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/profile_view/profile_view.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
 
 PreferredSizeWidget customAppBar({
   required String title,
@@ -38,7 +38,7 @@ PreferredSizeWidget customAppBar({
                 color: AppColors.whiteColor,
               ),
               onPressed: ()async {
-                if (await myAppController.hasPermissionToUse()) {
+                if (myAppController.hasPermissionToUse()) {
                   Get.to(() => ProfileView());
                 }
               },

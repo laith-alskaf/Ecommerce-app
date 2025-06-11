@@ -12,11 +12,11 @@ import 'package:simple_e_commerce/presentation/controllers/auth/login/login_cubi
 import 'package:simple_e_commerce/presentation/views/auth/forget_password_view/forget_password_view.dart';
 import 'package:simple_e_commerce/presentation/views/auth/sign_up_view/sign_up_main.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/main_view.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_button.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text_field.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_button.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text_field.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_toast.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
 
 class LoginPageWrapper extends StatelessWidget {
   const LoginPageWrapper({super.key});

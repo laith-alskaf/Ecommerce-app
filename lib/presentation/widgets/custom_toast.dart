@@ -1,12 +1,12 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
-import 'package:simple_e_commerce/ui/shared/utils.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
+import 'package:simple_e_commerce/core/utils/utils.dart';
 
 class CustomToast {
   static showMessage(

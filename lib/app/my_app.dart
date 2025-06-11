@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:simple_e_commerce/app/my_app_cubit.dart';
-import 'package:simple_e_commerce/presentation/controllers/auth/login/login_cubit.dart';
 import 'package:simple_e_commerce/presentation/controllers/main/main_cubit.dart';
 import 'package:simple_e_commerce/presentation/views/splash_screen_view/splash_screen_view.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
-import 'package:simple_e_commerce/ui/shared/utils.dart';
+import 'package:simple_e_commerce/core/utils/utils.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({

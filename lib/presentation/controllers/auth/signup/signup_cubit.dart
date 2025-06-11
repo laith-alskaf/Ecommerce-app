@@ -8,13 +8,12 @@ import 'package:simple_e_commerce/domain/usecases/auth/sendcode_usecase.dart';
 import 'package:simple_e_commerce/domain/usecases/auth/signup_usecase.dart';
 import 'package:simple_e_commerce/domain/usecases/auth/verify_usecase.dart';
 import 'package:simple_e_commerce/presentation/controllers/auth/signup/signup_mixin.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
 
 part 'signup_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> with SignUpProviders {
   final SendCodeUseCase sendCodeUseCase;
-  final VerifyUsecase verifyUseCase;
+  final VerifyUseCase verifyUseCase;
   final SignUpUseCase signUpUseCase;
 
   SignUpCubit(this.signUpUseCase, this.verifyUseCase, this.sendCodeUseCase)
@@ -32,10 +31,7 @@ class SignUpCubit extends Cubit<SignUpState> with SignUpProviders {
     );
     failureOrCategories.fold(
       (l) {
-        CustomToast.showMessage(
-          message: l.message,
-          messageType: MessageType.REJECTED,
-        );
+
         emit(SignUpError(message: l.message));
       },
       (r) {
@@ -51,10 +47,7 @@ class SignUpCubit extends Cubit<SignUpState> with SignUpProviders {
     );
     failureOrCategories.fold(
       (l) {
-        CustomToast.showMessage(
-          message: l.message,
-          messageType: MessageType.REJECTED,
-        );
+
         emit(VerifyError(message: l.message));
       },
       (r) {

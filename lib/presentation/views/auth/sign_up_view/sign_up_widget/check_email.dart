@@ -4,9 +4,9 @@ import 'package:simple_e_commerce/presentation/controllers/auth/signup/signup_cu
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_button.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_button.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
 
 class SignUpCheckEmail extends StatelessWidget {
   const SignUpCheckEmail({super.key, required this.controller});

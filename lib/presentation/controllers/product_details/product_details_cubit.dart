@@ -1,6 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
-import 'package:simple_e_commerce/core/usecases/usecase.dart';
 import 'package:simple_e_commerce/domain/usecases/product/get_all_product_usecase.dart';
 import 'package:simple_e_commerce/presentation/controllers/products/products_state.dart';
 

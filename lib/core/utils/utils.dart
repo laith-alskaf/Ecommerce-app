@@ -4,7 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_toast.dart';
 
 double screenWidth(percent) {
   return Get.size.width / percent;

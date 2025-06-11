@@ -5,7 +5,7 @@ import 'package:simple_e_commerce/core/data/network/endpoints/category_endpoints
 import 'package:simple_e_commerce/core/data/network/network_config.dart';
 import 'package:simple_e_commerce/core/enums/request_type.dart';
 import 'package:simple_e_commerce/core/translation/app_translation.dart';
-import 'package:simple_e_commerce/core/utils/network_utils.dart';
+import 'package:simple_e_commerce/core/network/network_utils.dart';
 
 class CategoryRepositories {
   static Future<Either<String, List<CategoryModel>>> allCategory() async {

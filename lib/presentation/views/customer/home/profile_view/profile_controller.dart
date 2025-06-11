@@ -15,6 +15,7 @@ class ProfileController extends BaseController {
   TextEditingController confirmNewPasswordController = TextEditingController();
   Rx<UserModel?> currentUser = Rx<UserModel?>(null);
   List<bool> isShowingPass = [false, false];
+  @override
   Rx<RequestStatus> requestStatus = RequestStatus.DEFUALT.obs;
   RxString currentLangCode = Get.locale?.languageCode.obs ?? 'en'.obs;
   final List<Map<String, String>> supportedLanguages = [

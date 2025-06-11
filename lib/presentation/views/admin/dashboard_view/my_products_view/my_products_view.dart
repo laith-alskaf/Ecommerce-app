@@ -6,11 +6,11 @@ import 'package:simple_e_commerce/core/enums/request_status.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/views/admin/dashboard_view/dashboard_controller.dart';
 import 'package:simple_e_commerce/presentation/views/admin/dashboard_view/my_products_view/dialog_add_item.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_grid.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text_field.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
-import 'package:simple_e_commerce/ui/shared/utils.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_grid.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text_field.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
+import 'package:simple_e_commerce/core/utils/utils.dart';
 
 class MyProductsView extends StatelessWidget {
   const MyProductsView({super.key});

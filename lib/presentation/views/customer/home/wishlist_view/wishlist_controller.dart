@@ -2,8 +2,8 @@ import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
 import 'package:simple_e_commerce/core/data/repositories/wishlist_repositories.dart';
 import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/services/base_controller.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_show_snackbar.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_show_snackbar.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_toast.dart';
 
 class WishlistController extends BaseController {
   List<ProductModel> wishlistItems = [];

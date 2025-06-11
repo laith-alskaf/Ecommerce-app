@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:simple_e_commerce/core/data/network/endpoints/category_endpoints.dart';
 import 'package:simple_e_commerce/core/error/exceptions.dart';
-import 'package:simple_e_commerce/core/utils/network_utils.dart';
+import 'package:simple_e_commerce/core/network/network_utils.dart';
 import 'package:simple_e_commerce/data/datasources/categories/category_remote_datasource.dart';
 import 'package:simple_e_commerce/data/models/category_model.dart';
 // Assuming NetworkConfig might be needed for headers, though for GET it might not be.

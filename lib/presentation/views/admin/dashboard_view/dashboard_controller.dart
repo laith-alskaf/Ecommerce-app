@@ -9,8 +9,8 @@ import 'package:simple_e_commerce/core/enums/file_type.dart';
 import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/services/base_controller.dart';
 import 'package:simple_e_commerce/presentation/views/admin/all_products_view_admin/all_products_view_controller.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_show_snackbar.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_show_snackbar.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_toast.dart';
 
 class DashboardController extends BaseController {
   late TextEditingController titleController = TextEditingController();

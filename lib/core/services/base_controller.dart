@@ -9,11 +9,9 @@ import 'package:simple_e_commerce/core/enums/operation_type.dart';
 import 'package:simple_e_commerce/core/enums/request_status.dart';
 import 'package:simple_e_commerce/core/utils/general_util.dart';
 import 'package:simple_e_commerce/presentation/views/auth/login_view/login_view.dart';
-import 'package:simple_e_commerce/presentation/views/auth/sign_up_view/sign_up_main.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_show_snackbar.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/show_Login_Required_Dialog.dart';
-import 'package:simple_e_commerce/ui/shared/utils.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_show_snackbar.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_toast.dart';
+import 'package:simple_e_commerce/core/utils/utils.dart';
 
 
 class BaseController extends GetxController {

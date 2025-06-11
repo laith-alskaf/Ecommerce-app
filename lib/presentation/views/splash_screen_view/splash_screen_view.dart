@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_e_commerce/app/di/service_locator.dart';
@@ -14,7 +13,7 @@ import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/views/admin/home_view_admin/home_view_admin.dart';
 import 'package:simple_e_commerce/presentation/views/auth/login_view/login_view.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/main_view.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
 
 class SplashScreenView extends StatelessWidget {
   const SplashScreenView({super.key});

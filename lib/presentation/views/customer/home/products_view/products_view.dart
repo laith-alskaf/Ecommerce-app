@@ -9,11 +9,11 @@ import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/controllers/products/products_cubit.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/product_details_view/product_details_view.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/products_view/products_view_controller.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_grid.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text_field.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
-import 'package:simple_e_commerce/ui/shared/utils.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_grid.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text_field.dart';
+import 'package:simple_e_commerce/core/utils/utils.dart';
 
 class ProductsPageWrapper extends StatelessWidget {
   const ProductsPageWrapper({super.key});

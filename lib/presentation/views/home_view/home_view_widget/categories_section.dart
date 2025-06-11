@@ -6,7 +6,7 @@ import 'package:simple_e_commerce/core/enums/request_status.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/views/admin/all_products_view_admin/home_view_widget/custom_categories_row.dart';
 import 'package:simple_e_commerce/presentation/views/home_view/home_view_controller.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
 
 class CategoriesSection extends StatelessWidget {
   final HomeViewController homeController;

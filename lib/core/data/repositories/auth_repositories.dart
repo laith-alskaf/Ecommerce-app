@@ -6,7 +6,7 @@ import 'package:simple_e_commerce/core/data/models/common_respons.dart';
 import 'package:simple_e_commerce/core/data/network/endpoints/auth_endpoints.dart';
 import 'package:simple_e_commerce/core/data/network/network_config.dart';
 import 'package:simple_e_commerce/core/enums/request_type.dart';
-import 'package:simple_e_commerce/core/utils/network_utils.dart';
+import 'package:simple_e_commerce/core/network/network_utils.dart';
 
 class UserRepository {
   Future<Either<String, String>> login({

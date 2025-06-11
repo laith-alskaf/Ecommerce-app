@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:simple_e_commerce/app/di/service_locator.dart';
 import 'package:simple_e_commerce/core/enums/bottom_navigation.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/controllers/main/main_cubit.dart';
-import 'package:simple_e_commerce/presentation/views/customer/home/main_controller.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
 
 class WishlistEmpty extends StatelessWidget {
   const WishlistEmpty({super.key});

@@ -5,14 +5,14 @@ import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/product_details_view/product_details_controller.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/product_details_view/product_details_widget/custom_title.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_button.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_cached_image.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
-import 'package:simple_e_commerce/ui/shared/utils.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_button.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_cached_image.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
+import 'package:simple_e_commerce/core/utils/utils.dart';
 
 class ProductDetailsView extends StatelessWidget {
- const  ProductDetailsView({super.key, required this.productDetails});
+  const ProductDetailsView({super.key, required this.productDetails});
 
   final ProductModel productDetails;
 
@@ -128,7 +128,6 @@ class ProductDetailsView extends StatelessWidget {
               icon: Icon(
                 controller.isProductFavorite.value
                     ? Icons.favorite
-
                     : Icons.favorite_border,
                 color:
                     controller.isProductFavorite.value
@@ -182,6 +181,7 @@ class ProductDetailsView extends StatelessWidget {
               ),
             ),
             (20.h).ph,
+
             CustomTitle(title: 'Description:'),
             CustomText(
               text:

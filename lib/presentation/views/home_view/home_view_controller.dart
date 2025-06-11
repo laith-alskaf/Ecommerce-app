@@ -9,7 +9,7 @@ import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/services/base_controller.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/views/auth/login_view/login_view.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_toast.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_toast.dart';
 
 class HomeViewController extends BaseController {
   Rx<Color> clickButton = AppColors.mainColor.obs;

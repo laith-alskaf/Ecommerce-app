@@ -4,9 +4,9 @@ import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/controllers/auth/signup/signup_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_row_info.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text_field.dart';
-import 'package:simple_e_commerce/ui/shared/extension_sizebox.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_row_info.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text_field.dart';
+import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';
 
 class UserForm extends StatelessWidget {
   const UserForm({super.key, required this.controller});

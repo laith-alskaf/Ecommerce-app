@@ -1,0 +1,1 @@
+export 'package:simple_e_commerce/domain/usecases/category/get_all_categories_usecase.dart';

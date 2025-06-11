@@ -3,7 +3,7 @@ import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/views/admin/home_view_admin/home_view_admin_controller.dart';
 import 'package:simple_e_commerce/presentation/views/admin/widget_drawer/widget_drawer.dart';
 import 'package:get/get.dart';
-import 'package:simple_e_commerce/ui/shared/custom_widget/custom_text.dart';
+import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
 
 // ignore: must_be_immutable
 class HomeViewAdmin extends StatelessWidget {

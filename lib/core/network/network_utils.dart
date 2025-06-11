@@ -127,7 +127,7 @@ class NetworkUtil {
 
       files!.forEach((key, value) {
         if (value.isNotEmpty) {
-          value.forEach((element) {
+          for (var element in value) {
             var multipartFile = http.MultipartFile.fromPath(
               key,
               element,
@@ -135,7 +135,7 @@ class NetworkUtil {
               contentType: MediaType.parse(lookupMimeType(element) ?? ''),
             );
             futures.add(multipartFile);
-          });
+          }
         }
       });
       var multipartFiles = await Future.wait(futures);
