@@ -7,7 +7,7 @@ import 'package:simple_e_commerce/app/my_app.dart';
 import 'package:simple_e_commerce/app/my_app_controller.dart';
 import 'package:simple_e_commerce/core/services/background_message_handler_service.dart';
 import 'package:simple_e_commerce/core/services/connectivity_service.dart';
-import 'package:simple_e_commerce/app/di/service_locator.dart' as di; // Import Service Locator
+import 'package:simple_e_commerce/app/di/service_locator.dart' as di;
 
 @pragma('vm:entry-point')
 Future<void> _handleBackgroundMessage(RemoteMessage message) async {

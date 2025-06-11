@@ -5,18 +5,15 @@ import 'package:simple_e_commerce/core/network/network_info.dart';
 import 'package:simple_e_commerce/data/datasources/categories/category_remote_datasource.dart';
 import 'package:simple_e_commerce/domain/entities/category_entity.dart';
 import 'package:simple_e_commerce/domain/repositories/category_repository.dart';
-// CategoryModel is not directly returned by the repository, but the datasource returns it.
-// The repository's job is to return CategoryEntity. Since CategoryModel extends CategoryEntity,
-// it can be returned directly if no further transformation is needed.
 
 class CategoryRepositoryImpl implements CategoryRepository {
   final CategoryRemoteDataSource remoteDataSource;
-  // final CategoryLocalDataSource localDataSource; // If you had local caching
+
   final NetworkInfo networkInfo;
 
   CategoryRepositoryImpl({
     required this.remoteDataSource,
-    // required this.localDataSource,
+
     required this.networkInfo,
   });
 
@@ -35,10 +32,4 @@ class CategoryRepositoryImpl implements CategoryRepository {
       return Left(OfflineFailure(message: "No internet connection."));
     }
   }
-
-  // Example for another method if it were defined in CategoryRepository:
-  // @override
-  // Future<Either<Failure, CategoryEntity>> getCategoryById(String id) async {
-  //   // ... implementation ...
-  // }
 }

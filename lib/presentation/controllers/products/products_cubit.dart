@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:simple_e_commerce/core/usecases/usecase.dart';
+import 'package:simple_e_commerce/core/params/product/get_product_pagination_params.dart';
 import 'package:simple_e_commerce/domain/entities/product_entity.dart';
 import 'package:simple_e_commerce/domain/usecases/product/get_all_product_usecase.dart';
 import 'package:simple_e_commerce/presentation/controllers/products/products_state.dart';
@@ -18,7 +18,7 @@ class ProductsCubit extends Cubit<ProductsState> {
   Future<void> fetchProducts() async {
     emit(ProductsLoading());
     final failureOrProducts = await getAllProductsUseCase.call(
-      const NoParams(),
+      GetProductPaginationParams(limit: 10, page: 1),
     );
     failureOrProducts.fold(
       (failure) => emit(ProductsError(message: failure.message)),

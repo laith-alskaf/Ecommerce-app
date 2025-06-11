@@ -5,6 +5,7 @@ import 'package:simple_e_commerce/core/enums/request_type.dart';
 import 'package:path/path.dart' as path;
 import 'package:mime/mime.dart';
 import 'package:http_parser/http_parser.dart';
+
 class NetworkUtil {
   static String baseUrl = 'ecommerce-backend-clean-architecture.vercel.app';
   static var client = http.Client();
@@ -30,7 +31,7 @@ class NetworkUtil {
       log('==========> $uri');
       //?--- To Save api response ----
       late http.Response
-      response; // حتى يتم استقبال البيانات من http ويتم تاخير تعريفه حتى يتم طلبه
+      response;
       //?--- To Save api status code ----
 
       //!--- Required convert ap i response to Map ----
@@ -115,38 +116,48 @@ class NetworkUtil {
     required RequestType type,
     Map<String, String>? headers = const {},
     Map<String, String>? fields = const {},
-    Map<String, String>? files = const {},
+    Map<String, List<String>>? files = const {},
     Map<String, dynamic>? params,
   }) async {
-    // assert(type == RequestType.GET || type == RequestType.MULTIPART);
-
     try {
-      var request =
-      http.MultipartRequest('POST', Uri.https(baseUrl, url, params));
+      var uri = Uri.https(baseUrl, url, params);
+      var request = http.MultipartRequest('POST', uri);
+      log(uri.toString());
+      var futures = <Future>[];
 
-      var filesKeyList = files!.keys.toList();
-      var filesNameList = files.values.toList();
-      for (int i = 0; i < filesKeyList.length; i++) {
-        if (filesNameList[i].isNotEmpty) {
-          var multipartFile = http.MultipartFile.fromPath(
-            filesKeyList[i],
-            filesNameList[i],
-            filename: path.basename(filesNameList[i]),
-            contentType: getContentType(filesNameList[i]),
-          );
-          request.files.add(await multipartFile);
+      files!.forEach((key, value) {
+        if (value.isNotEmpty) {
+          value.forEach((element) {
+            var multipartFile = http.MultipartFile.fromPath(
+              key,
+              element,
+              filename: path.basename(element),
+              contentType: MediaType.parse(lookupMimeType(element) ?? ''),
+            );
+            futures.add(multipartFile);
+          });
         }
+      });
+      var multipartFiles = await Future.wait(futures);
+      for (var file in multipartFiles) {
+        request.files.add(file);
       }
+
       request.headers.addAll(headers!);
       request.fields.addAll(fields!);
 
-      var response = await request.send();
+      var response = await request.send().timeout(Duration(minutes: 1));
 
       Map<String, dynamic> responseJson = {};
-      var value = await response.stream.bytesToString();
+      var value;
+      try {
+        value = await response.stream.bytesToString();
+      } catch (e) {
+        print(e);
+      }
       responseJson.putIfAbsent('statusCode', () => response.statusCode);
       responseJson.putIfAbsent('response', () => jsonDecode(value));
-      print(responseJson);
+      log(responseJson.toString());
       return responseJson;
     } catch (error) {
       error.toString();

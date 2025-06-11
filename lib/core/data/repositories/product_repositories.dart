@@ -167,7 +167,7 @@ class ProductRepositories {
           needAuth: true,
           type: RequestType.POST,
         ),
-        files: {'image': image.path},
+        files: {'image': [image.path]},
         fields: {
           'title': product['title'],
           'stockQuantity': product['stockQuantity'].toString(),
