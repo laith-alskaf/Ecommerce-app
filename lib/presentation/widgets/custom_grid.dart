@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
+import 'package:simple_e_commerce/domain/entities/product_entity.dart';
 import 'package:simple_e_commerce/presentation/widgets/custom_cached_image.dart';
 import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
 import 'package:simple_e_commerce/presentation/widgets/show_alert_snackbar.dart';
@@ -17,7 +17,7 @@ class CustomGrid extends StatelessWidget {
     this.isFavorite = false,
   });
 
-  final ProductModel product;
+  final ProductEntity product;
   final Function? onTapDelete;
   final Function()? onFavoriteTap;
   final bool isFavorite;
@@ -47,11 +47,11 @@ class CustomGrid extends StatelessWidget {
             child: Stack(
               children: [
                 Hero(
-                  tag: 'product_image_${product.id}_main',
+                  tag: product.images[0],
                   child: CustomCachedImage(
                     image:
-                        product.images != null && product.images!.isNotEmpty
-                            ? product.images![0]
+                        product.images.isNotEmpty
+                            ? product.images[0]
                             : 'https://via.placeholder.com/200x200/F0F0F0/AAAAAA?text=No+Image',
                     widthCircularProgress: 25.w,
                     heightCircularProgress: 25.w,
@@ -119,7 +119,7 @@ class CustomGrid extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomText(
-                    text: product.title ?? 'Untitled Product',
+                    text: product.title,
                     textColor: AppColors.blackColor.withOpacity(0.85),
                     textType: TextStyleType.body,
                     fontWeight: FontWeight.w600,

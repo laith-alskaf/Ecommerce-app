@@ -5,9 +5,10 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
 import 'package:simple_e_commerce/presentation/views/customer/home/product_details_view/product_details_view.dart';
 import 'package:simple_e_commerce/presentation/widgets/notification_snack.dart';
+
+import '../../data/models/product_model.dart';
 
 abstract class MessageHandlerNotification {
   void showInApp({required RemoteMessage message});
@@ -56,10 +57,10 @@ class MessageNewProduct extends MessageHandlerNotification {
       content: NotificationContent(
         id: math.Random().nextInt(999999),
         channelKey: 'basic_channel',
-        title: product.title ?? 'Notification',
+        title: product.title,
         body: product.description ?? 'You have a new message.',
         payload: {'product': message.data['body']},
-        largeIcon: product.images![0],
+        largeIcon: product.images[0],
         notificationLayout: NotificationLayout.BigPicture,
         color: Color(0xFF00FF00),
         wakeUpScreen: true,

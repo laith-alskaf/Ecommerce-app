@@ -6,6 +6,7 @@ import 'package:simple_e_commerce/core/data/repositories/product_repositories.da
 import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/services/base_controller.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
+import 'package:simple_e_commerce/domain/entities/product_entity.dart';
 import 'package:simple_e_commerce/presentation/widgets/custom_toast.dart';
 
 class AllProductsViewController extends BaseController {
@@ -63,7 +64,7 @@ class AllProductsViewController extends BaseController {
 
   Future getProductsByCategory({required String categoryID}) async {
     selectedNum == 0 ? selectCategory = '' : null;
-    allProducts.value = <ProductModel>[];
+    allProducts.value = <ProductEntity>[];
     await runLoadingFutureFunction(
       function: () async {
         await ProductRepositories.getProductsByCategory(

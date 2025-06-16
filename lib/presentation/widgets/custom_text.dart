@@ -72,7 +72,7 @@ class CustomText extends StatelessWidget {
     switch (textType) {
       case TextStyleType.title:
         return TextStyle(
-          fontFamily: 'BalooBhaijaan2',
+          fontFamily: 'Cairo',
           height: heightText ?? 1.2,
           overflow: overflow,
           decoration: textDecoration,
@@ -84,7 +84,7 @@ class CustomText extends StatelessWidget {
 
       case TextStyleType.subtitle:
         return TextStyle(
-          fontFamily: 'BalooBhaijaan2',
+          fontFamily: 'Cairo',
           height: heightText ?? 1.2,
           overflow: overflow,
           decoration: textDecoration,
@@ -96,7 +96,7 @@ class CustomText extends StatelessWidget {
 
       case TextStyleType.bodyBig:
         return TextStyle(
-          fontFamily: 'BalooBhaijaan2',
+          fontFamily: 'Cairo',
           height: heightText ?? 1.2,
           decoration: textDecoration,
           color: textColor ?? AppColors.textColor,
@@ -108,7 +108,7 @@ class CustomText extends StatelessWidget {
 
       case TextStyleType.body:
         return TextStyle(
-            fontFamily: 'BalooBhaijaan2',
+            fontFamily: 'Cairo',
             height: heightText ?? 1,
             decoration: textDecoration,
             color: textColor ?? AppColors.textColor,
@@ -119,7 +119,7 @@ class CustomText extends StatelessWidget {
 
       case TextStyleType.small:
         return TextStyle(
-          fontFamily: 'BalooBhaijaan2',
+          fontFamily: 'Cairo',
           height: heightText ?? 1,
           decoration: textDecoration,
           overflow: overflow,
@@ -131,7 +131,7 @@ class CustomText extends StatelessWidget {
 
       case TextStyleType.custom:
         return TextStyle(
-          fontFamily: 'BalooBhaijaan2',
+          fontFamily: 'Cairo',
           height: heightText ?? 1.2,
           decoration: textDecoration,
           decorationColor: decorationColor ?? textColor,

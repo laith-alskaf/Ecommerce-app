@@ -7,7 +7,6 @@ import 'package:simple_e_commerce/core/data/repositories/storage_repositories.da
 import 'package:simple_e_commerce/core/translation/app_translation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/views/admin/home_view_admin/home_view_admin.dart';
@@ -41,7 +40,7 @@ class SplashScreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     initAppSplash(context);
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: AppColors.mainColor,
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -49,38 +48,21 @@ class SplashScreenView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(
-                child: Center(
-                  child: SvgPicture.asset(
-                    'assets/images/ic_splash.svg',
-                    width: 220.w,
-                    color: AppColors.mainColor,
-                  ),
-                ),
-              ),
-              SizedBox(height: 40.h),
-              SpinKitThreeBounce(color: AppColors.mainColor),
+              SvgPicture.asset('assets/logo.svg', width: 250.w),
               SizedBox(height: 20.h),
               CustomText(
-                text: tr('Welcome!'),
-                textType: TextStyleType.title,
-                isTextAlign: TextAlign.center,
+                text: tr('Thawbuk'),
+                textType: TextStyleType.custom,
                 fontWeight: FontWeight.bold,
-                textColor: AppColors.mainColor,
-                startPadding: 0.w,
-                endPadding: 0.w,
+                textColor: AppColors.whiteColor,
+                fontSize: 60.sp,
               ),
-              SizedBox(height: 20.h),
+              SizedBox(height: 10.h),
               CustomText(
-                text: tr('Loading...'),
-                textType: TextStyleType.body,
-                isTextAlign: TextAlign.center,
-                fontWeight: FontWeight.normal,
-                textColor: AppColors.grayColor,
-                startPadding: 0.w,
-                endPadding: 0.w,
+                text: tr('Your style starts here'),
+                textType: TextStyleType.title,
+                textColor: AppColors.whiteColor,
               ),
-              SizedBox(height: 130.h),
             ],
           ),
         ),

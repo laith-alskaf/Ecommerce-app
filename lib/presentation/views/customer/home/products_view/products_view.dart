@@ -28,7 +28,7 @@ class ProductsPageWrapper extends StatelessWidget {
 }
 
 class ProductsView extends StatelessWidget {
-   ProductsView({super.key});
+  ProductsView({super.key});
 
   final ProductsViewController controller = Get.put(ProductsViewController());
 
@@ -119,7 +119,7 @@ class ProductsView extends StatelessWidget {
                                   child: CustomGrid(
                                     onFavoriteTap: () async {
                                       await controller.addProductToWishlist(
-                                        id: controller.allProducts[index].id!,
+                                        id: controller.allProducts[index].id,
                                       );
                                     },
                                     product: controller.filteredProducts[index],

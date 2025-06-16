@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_e_commerce/presentation/controllers/category/categories_cubit.dart';
 import 'package:simple_e_commerce/presentation/controllers/category/categories_state.dart';
 import 'package:simple_e_commerce/presentation/views/home_view/home_view_widget/category_item_widget.dart';

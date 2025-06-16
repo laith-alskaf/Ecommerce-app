@@ -1,13 +1,15 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
 import 'package:simple_e_commerce/core/data/models/common_respons.dart';
 import 'package:simple_e_commerce/core/data/network/endpoints/product_endpoint.dart';
 import 'package:simple_e_commerce/core/data/network/network_config.dart';
 import 'package:simple_e_commerce/core/enums/request_type.dart';
 import 'package:simple_e_commerce/core/translation/app_translation.dart';
 import 'package:simple_e_commerce/core/network/network_utils.dart';
+import 'package:simple_e_commerce/domain/entities/product_entity.dart';
+
+import '../../../data/models/product_model.dart';
 
 class ProductRepositories {
   static Future<Either<String, ({List<ProductModel> products, int totalPages})>> getProducts({
@@ -81,7 +83,7 @@ class ProductRepositories {
     }
   }
 
-  static Future<Either<String, List<ProductModel>>> searchProduct({
+  static Future<Either<String, List<ProductEntity>>> searchProduct({
     required String title,
     int page = 1,
     int limit = 10,

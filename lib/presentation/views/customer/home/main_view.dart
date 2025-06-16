@@ -15,7 +15,7 @@ import 'package:simple_e_commerce/presentation/views/customer/home/products_view
 import 'package:simple_e_commerce/presentation/views/customer/home/wishlist_view/wishlist_view.dart';
 import 'package:simple_e_commerce/presentation/views/home_view/home_view.dart';
 import 'package:simple_e_commerce/presentation/widgets/custom_app_bar.dart';
-import 'package:simple_e_commerce/presentation/widgets/show_Login_Required_Dialog.dart';
+import 'package:simple_e_commerce/presentation/widgets/show_login_required_dialog.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});

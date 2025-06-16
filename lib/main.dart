@@ -29,7 +29,7 @@ Future<void> main() async {
     ),
   ], debug: true);
   FirebaseMessaging.onBackgroundMessage(_handleBackgroundMessage);
-  await initApp(); // initApp might have Get.put calls, ensure DI is ready
+  await initApp();
   // Get.put(SharedPreferenceRepositories());
   Get.put(ConnectivityService());
   Get.put(MyAppController());

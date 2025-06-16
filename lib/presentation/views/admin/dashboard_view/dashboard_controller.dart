@@ -8,6 +8,7 @@ import 'package:simple_e_commerce/core/data/repositories/product_repositories.da
 import 'package:simple_e_commerce/core/enums/file_type.dart';
 import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/services/base_controller.dart';
+import 'package:simple_e_commerce/domain/entities/product_entity.dart';
 import 'package:simple_e_commerce/presentation/views/admin/all_products_view_admin/all_products_view_controller.dart';
 import 'package:simple_e_commerce/presentation/widgets/custom_show_snackbar.dart';
 import 'package:simple_e_commerce/presentation/widgets/custom_toast.dart';
@@ -24,7 +25,7 @@ class DashboardController extends BaseController {
   int totalRevenue = 0;
   int totalProducts = 0;
   int totalOrders = 0;
-  List<ProductModel> productsMine = <ProductModel>[];
+  List<ProductEntity> productsMine = <ProductEntity>[];
   late UserModel userInfo;
   final ImagePicker picker = ImagePicker();
   String imageRecipe = '';
@@ -131,11 +132,11 @@ class DashboardController extends BaseController {
     );
   }
 
-  Future deleteProduct({required ProductModel product}) async {
+  Future deleteProduct({required ProductEntity product}) async {
     productsMine.clear();
     await runLoadingFutureFunction(
       function: () async {
-        await ProductRepositories.deleteProduct(productId: product.id!).then((
+        await ProductRepositories.deleteProduct(productId: product.id).then((
           value,
         ) {
           value.fold(

@@ -4,7 +4,7 @@ import 'package:simple_e_commerce/core/utils/colors.dart';
 import 'package:simple_e_commerce/presentation/controllers/auth/signup/signup_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:simple_e_commerce/presentation/widgets/custom_row_info.dart';
+import 'package:simple_e_commerce/presentation/views/auth/sign_up_view/sign_up_widget/custom_row_info.dart';
 import 'package:simple_e_commerce/presentation/widgets/custom_text.dart';
 import 'package:simple_e_commerce/presentation/widgets/custom_text_field.dart';
 import 'package:simple_e_commerce/core/utils/extension_sizebox.dart';

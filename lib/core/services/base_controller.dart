@@ -8,6 +8,7 @@ import 'package:simple_e_commerce/core/enums/message_type.dart';
 import 'package:simple_e_commerce/core/enums/operation_type.dart';
 import 'package:simple_e_commerce/core/enums/request_status.dart';
 import 'package:simple_e_commerce/core/utils/general_util.dart';
+import 'package:simple_e_commerce/domain/entities/product_entity.dart';
 import 'package:simple_e_commerce/presentation/views/auth/login_view/login_view.dart';
 import 'package:simple_e_commerce/presentation/widgets/custom_show_snackbar.dart';
 import 'package:simple_e_commerce/presentation/widgets/custom_toast.dart';
@@ -16,7 +17,7 @@ import 'package:simple_e_commerce/core/utils/utils.dart';
 
 class BaseController extends GetxController {
   Rx<RequestStatus> requestStatus = RequestStatus.DEFUALT.obs;
-  RxList<ProductModel> allProducts = <ProductModel>[].obs;
+  RxList<ProductEntity> allProducts = <ProductEntity>[].obs;
   var status = RequestStatus.DEFUALT.obs;
   Rx<ProductModel?> productDetails = Rxn<ProductModel>();
 

@@ -1,14 +1,16 @@
 import 'package:dartz/dartz.dart';
-import 'package:simple_e_commerce/core/data/models/api/product_model.dart';
 import 'package:simple_e_commerce/core/data/models/common_respons.dart';
 import 'package:simple_e_commerce/core/data/network/endpoints/wishlist_endpoints.dart';
 import 'package:simple_e_commerce/core/data/network/network_config.dart';
 import 'package:simple_e_commerce/core/enums/request_type.dart';
 import 'package:simple_e_commerce/core/translation/app_translation.dart';
 import 'package:simple_e_commerce/core/network/network_utils.dart';
+import 'package:simple_e_commerce/domain/entities/product_entity.dart';
+
+import '../../../data/models/product_model.dart';
 
 class WishlistRepositories {
-  static Future<Either<String, List<ProductModel>>> getWishlist() async {
+  static Future<Either<String, List<ProductEntity>>> getWishlist() async {
     try {
       return NetworkUtil.sendRequest(
         type: RequestType.GET,

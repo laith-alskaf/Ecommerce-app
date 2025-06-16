@@ -4,6 +4,4 @@ import 'package:simple_e_commerce/domain/entities/category_entity.dart';
 
 abstract class CategoryRepository {
   Future<Either<Failure, List<CategoryEntity>>> getAllCategories();
-  // Add other category-related methods here if needed, e.g.:
-  // Future<Either<Failure, CategoryEntity>> getCategoryById(String id);
 }
